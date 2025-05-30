@@ -3232,8 +3232,6 @@ That was enough.
                          class="ocean-memory-image" />
                     
                     <!-- Text Overlay on Image -->
-                    <div class="ocean-text-overlay">
-                    </div>
                 </div>
                 
                 <!-- Story Text Below Image -->
@@ -3696,13 +3694,44 @@ Take care, always. ❤️
 
             // Update scroll-triggered navigation
             memorySections.forEach((section, index) => {
+                // Adjust trigger points for mobile vs desktop
+                const isMobile = window.innerWidth <= 768;
+                const startPoint = isMobile ? 'top 70%' : 'top 50%';
+                const endPoint = isMobile ? 'bottom 30%' : 'bottom 50%';
+                
                 ScrollTrigger.create({
                     trigger: section,
-                    start: 'top 50%',
-                    end: 'bottom 50%',
+                    start: startPoint,
+                    end: endPoint,
                     onEnter: () => updateActiveMemory(index + 1),
-                    onEnterBack: () => updateActiveMemory(index + 1)
+                    onEnterBack: () => updateActiveMemory(index + 1),
+                    // Add additional trigger for the first section
+                    ...(index === 0 && {
+                        onRefresh: () => {
+                            // Check if we're at the top of the page
+                            if (window.scrollY < 100) {
+                                updateActiveMemory(1);
+                            }
+                        }
+                    })
                 });
+            });
+
+            // Additional check for the first section on page load and scroll
+            function checkFirstSection() {
+                if (window.scrollY < window.innerHeight * 0.3) {
+                    updateActiveMemory(1);
+                }
+            }
+
+            // Initialize first section on load
+            checkFirstSection();
+            
+            // Add scroll listener for better first section detection
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(checkFirstSection, 50);
             });
 
             function updateActiveMemory(memoryNumber) {
@@ -3881,13 +3910,44 @@ Take care, always. ❤️
 
             // Update scroll-triggered navigation
             memorySections.forEach((section, index) => {
+                // Adjust trigger points for mobile vs desktop
+                const isMobile = window.innerWidth <= 768;
+                const startPoint = isMobile ? 'top 70%' : 'top 50%';
+                const endPoint = isMobile ? 'bottom 30%' : 'bottom 50%';
+                
                 ScrollTrigger.create({
                     trigger: section,
-                    start: 'top 50%',
-                    end: 'bottom 50%',
+                    start: startPoint,
+                    end: endPoint,
                     onEnter: () => updateActiveMemory(index + 1),
-                    onEnterBack: () => updateActiveMemory(index + 1)
+                    onEnterBack: () => updateActiveMemory(index + 1),
+                    // Add additional trigger for the first section
+                    ...(index === 0 && {
+                        onRefresh: () => {
+                            // Check if we're at the top of the page
+                            if (window.scrollY < 100) {
+                                updateActiveMemory(1);
+                            }
+                        }
+                    })
                 });
+            });
+
+            // Additional check for the first section on page load and scroll
+            function checkFirstSection() {
+                if (window.scrollY < window.innerHeight * 0.3) {
+                    updateActiveMemory(1);
+                }
+            }
+
+            // Initialize first section on load
+            checkFirstSection();
+            
+            // Add scroll listener for better first section detection
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(checkFirstSection, 50);
             });
 
             function updateActiveMemory(memoryNumber) {
@@ -4168,13 +4228,44 @@ Take care, always. ❤️
 
             // Update scroll-triggered navigation
             memorySections.forEach((section, index) => {
+                // Adjust trigger points for mobile vs desktop
+                const isMobile = window.innerWidth <= 768;
+                const startPoint = isMobile ? 'top 70%' : 'top 50%';
+                const endPoint = isMobile ? 'bottom 30%' : 'bottom 50%';
+                
                 ScrollTrigger.create({
                     trigger: section,
-                    start: 'top 50%',
-                    end: 'bottom 50%',
+                    start: startPoint,
+                    end: endPoint,
                     onEnter: () => updateActiveMemory(index + 1),
-                    onEnterBack: () => updateActiveMemory(index + 1)
+                    onEnterBack: () => updateActiveMemory(index + 1),
+                    // Add additional trigger for the first section
+                    ...(index === 0 && {
+                        onRefresh: () => {
+                            // Check if we're at the top of the page
+                            if (window.scrollY < 100) {
+                                updateActiveMemory(1);
+                            }
+                        }
+                    })
                 });
+            });
+
+            // Additional check for the first section on page load and scroll
+            function checkFirstSection() {
+                if (window.scrollY < window.innerHeight * 0.3) {
+                    updateActiveMemory(1);
+                }
+            }
+
+            // Initialize first section on load
+            checkFirstSection();
+            
+            // Add scroll listener for better first section detection
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(checkFirstSection, 50);
             });
 
             function updateActiveMemory(memoryNumber) {
@@ -4437,13 +4528,44 @@ Take care, always. ❤️
 
             // Update scroll-triggered navigation
             memorySections.forEach((section, index) => {
+                // Adjust trigger points for mobile vs desktop
+                const isMobile = window.innerWidth <= 768;
+                const startPoint = isMobile ? 'top 70%' : 'top 50%';
+                const endPoint = isMobile ? 'bottom 30%' : 'bottom 50%';
+                
                 ScrollTrigger.create({
                     trigger: section,
-                    start: 'top 50%',
-                    end: 'bottom 50%',
+                    start: startPoint,
+                    end: endPoint,
                     onEnter: () => updateActiveMemory(index + 1),
-                    onEnterBack: () => updateActiveMemory(index + 1)
+                    onEnterBack: () => updateActiveMemory(index + 1),
+                    // Add additional trigger for the first section
+                    ...(index === 0 && {
+                        onRefresh: () => {
+                            // Check if we're at the top of the page
+                            if (window.scrollY < 100) {
+                                updateActiveMemory(1);
+                            }
+                        }
+                    })
                 });
+            });
+
+            // Additional check for the first section on page load and scroll
+            function checkFirstSection() {
+                if (window.scrollY < window.innerHeight * 0.3) {
+                    updateActiveMemory(1);
+                }
+            }
+
+            // Initialize first section on load
+            checkFirstSection();
+            
+            // Add scroll listener for better first section detection
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(checkFirstSection, 50);
             });
 
             function updateActiveMemory(memoryNumber) {
@@ -4471,6 +4593,179 @@ Take care, always. ❤️
         });
 
         // Starry Dreams Section Animations and Interactions
+    </script>
+    
+    <!-- Global Navigation Handler for Mobile Fix -->
+    <script>
+        // Global navigation fix for mobile devices
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for all sections to be loaded
+            setTimeout(() => {
+                setupGlobalNavigation();
+            }, 1000);
+        });
+
+        function setupGlobalNavigation() {
+            const memoryNavDots = document.querySelectorAll('.nav-dot');
+            const memorySections = document.querySelectorAll('.memory-section');
+            const totalMemories = memorySections.length;
+
+            // Update total memories counter
+            const totalMemoriesSpan = document.getElementById('total-memories');
+            if (totalMemoriesSpan) {
+                totalMemoriesSpan.textContent = totalMemories;
+            }
+
+            // Enhanced mobile detection
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+            
+            // Create more sensitive scroll triggers for mobile
+            memorySections.forEach((section, index) => {
+                const startPoint = isMobile ? 'top 85%' : 'top 60%';
+                const endPoint = isMobile ? 'bottom 15%' : 'bottom 40%';
+                
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: startPoint,
+                    end: endPoint,
+                    onEnter: () => {
+                        updateActiveMemory(index + 1);
+                    },
+                    onEnterBack: () => {
+                        updateActiveMemory(index + 1);
+                    },
+                    // Special handling for first section
+                    onRefresh: () => {
+                        if (index === 0 && window.scrollY < window.innerHeight * 0.2) {
+                            updateActiveMemory(1);
+                        }
+                    }
+                });
+            });
+
+            // Enhanced first section detection for mobile
+            function checkFirstSectionMobile() {
+                const scrollPosition = window.scrollY;
+                const firstSectionHeight = memorySections[0] ? memorySections[0].offsetHeight : window.innerHeight;
+                
+                // If we're in the top portion of the page, ensure first memory is active
+                if (scrollPosition < firstSectionHeight * 0.3) {
+                    updateActiveMemory(1);
+                    return true;
+                }
+                return false;
+            }
+
+            // Initialize on load
+            checkFirstSectionMobile();
+
+            // Enhanced scroll listener with throttling for better mobile performance
+            let ticking = false;
+            let scrollTimeout;
+
+            function handleScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        checkFirstSectionMobile();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+                
+                // Debounced check
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(checkFirstSectionMobile, 100);
+            }
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Handle touch events for mobile
+            if (isMobile) {
+                let touchStartY = 0;
+                
+                window.addEventListener('touchstart', (e) => {
+                    touchStartY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                window.addEventListener('touchend', (e) => {
+                    const touchEndY = e.changedTouches[0].clientY;
+                    const touchDiff = touchStartY - touchEndY;
+                    
+                    // Check after touch scroll
+                    setTimeout(checkFirstSectionMobile, 200);
+                }, { passive: true });
+            }
+
+            // Intersection Observer as backup for better mobile detection
+            if ('IntersectionObserver' in window) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: isMobile ? '-20% 0px -20% 0px' : '-30% 0px -30% 0px',
+                    threshold: isMobile ? [0, 0.1, 0.25, 0.5, 0.75, 1] : [0, 0.25, 0.5, 0.75, 1]
+                };
+
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
+                            const sectionIndex = Array.from(memorySections).indexOf(entry.target);
+                            if (sectionIndex !== -1) {
+                                updateActiveMemory(sectionIndex + 1);
+                            }
+                        }
+                    });
+                }, observerOptions);
+
+                memorySections.forEach(section => {
+                    sectionObserver.observe(section);
+                });
+            }
+
+            function updateActiveMemory(memoryNumber) {
+                // Update counter
+                const currentMemorySpan = document.getElementById('current-memory');
+                if (currentMemorySpan) {
+                    currentMemorySpan.textContent = memoryNumber;
+                }
+
+                // Update navigation dots
+                memoryNavDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === memoryNumber - 1);
+                });
+            }
+
+            // Navigation dot click handlers
+            memoryNavDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    const targetSection = memorySections[index];
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Force update after scroll
+                        setTimeout(() => {
+                            updateActiveMemory(index + 1);
+                        }, 800);
+                    }
+                });
+            });
+
+            // Handle orientation change on mobile
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => {
+                    ScrollTrigger.refresh();
+                    checkFirstSectionMobile();
+                }, 300);
+            });
+
+            // Handle resize
+            window.addEventListener('resize', () => {
+                setTimeout(() => {
+                    ScrollTrigger.refresh();
+                    checkFirstSectionMobile();
+                }, 200);
+            });
+        }
     </script>
 </body>
 </html> 
