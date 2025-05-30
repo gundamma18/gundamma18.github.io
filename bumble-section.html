@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our First Bumble Meeting 🐝</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="bumble-section.css">
+</head>
+<body>
+    <!-- Bumble Meeting Section -->
+    <section class="bumble-section" id="bumble-meeting">
+        
+        <!-- Background Elements -->
+        <div class="background-container">
+            <!-- Honeycomb Pattern -->
+            <div class="honeycomb-bg"></div>
+            
+            <!-- Floating Particles -->
+            <div class="particles-container">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            
+            <!-- Stars -->
+            <div class="stars-container">
+                <div class="star star-1"></div>
+                <div class="star star-2"></div>
+                <div class="star star-3"></div>
+                <div class="star star-4"></div>
+                <div class="star star-5"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-container">
+            
+            <!-- Left Bee -->
+            <div class="bee-container bee-left" id="bee-left">
+                <div class="bee-glow"></div>
+                <svg class="bee-svg" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Bee Body -->
+                    <ellipse cx="50" cy="40" rx="25" ry="15" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                    
+                    <!-- Bee Stripes -->
+                    <rect x="35" y="32" width="30" height="3" fill="#333" rx="1"/>
+                    <rect x="35" y="40" width="30" height="3" fill="#333" rx="1"/>
+                    <rect x="35" y="48" width="30" height="3" fill="#333" rx="1"/>
+                    
+                    <!-- Wings -->
+                    <ellipse cx="35" cy="25" rx="12" ry="8" fill="rgba(255,255,255,0.7)" class="wing wing-left"/>
+                    <ellipse cx="65" cy="25" rx="12" ry="8" fill="rgba(255,255,255,0.7)" class="wing wing-right"/>
+                    
+                    <!-- Head -->
+                    <circle cx="50" cy="20" r="8" fill="#FFD700"/>
+                    
+                    <!-- Eyes -->
+                    <circle cx="47" cy="18" r="2" fill="#333"/>
+                    <circle cx="53" cy="18" r="2" fill="#333"/>
+                    <circle cx="47.5" cy="17.5" r="0.5" fill="#fff"/>
+                    <circle cx="53.5" cy="17.5" r="0.5" fill="#fff"/>
+                    
+                    <!-- Antennae -->
+                    <line x1="47" y1="12" x2="45" y2="8" stroke="#333" stroke-width="1" stroke-linecap="round"/>
+                    <line x1="53" y1="12" x2="55" y2="8" stroke="#333" stroke-width="1" stroke-linecap="round"/>
+                    <circle cx="45" cy="8" r="1" fill="#333"/>
+                    <circle cx="55" cy="8" r="1" fill="#333"/>
+                    
+                    <!-- Smile -->
+                    <path d="M 47 22 Q 50 24 53 22" stroke="#333" stroke-width="1" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <!-- Right Bee -->
+            <div class="bee-container bee-right" id="bee-right">
+                <div class="bee-glow"></div>
+                <svg class="bee-svg" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Bee Body -->
+                    <ellipse cx="50" cy="40" rx="25" ry="15" fill="#FFB6C1" stroke="#FF69B4" stroke-width="2"/>
+                    
+                    <!-- Bee Stripes -->
+                    <rect x="35" y="32" width="30" height="3" fill="#333" rx="1"/>
+                    <rect x="35" y="40" width="30" height="3" fill="#333" rx="1"/>
+                    <rect x="35" y="48" width="30" height="3" fill="#333" rx="1"/>
+                    
+                    <!-- Wings -->
+                    <ellipse cx="35" cy="25" rx="12" ry="8" fill="rgba(255,182,193,0.7)" class="wing wing-left"/>
+                    <ellipse cx="65" cy="25" rx="12" ry="8" fill="rgba(255,182,193,0.7)" class="wing wing-right"/>
+                    
+                    <!-- Head -->
+                    <circle cx="50" cy="20" r="8" fill="#FFB6C1"/>
+                    
+                    <!-- Eyes with eyelashes -->
+                    <circle cx="47" cy="18" r="2" fill="#333"/>
+                    <circle cx="53" cy="18" r="2" fill="#333"/>
+                    <circle cx="47.5" cy="17.5" r="0.5" fill="#fff"/>
+                    <circle cx="53.5" cy="17.5" r="0.5" fill="#fff"/>
+                    
+                    <!-- Eyelashes -->
+                    <line x1="45" y1="16" x2="44" y2="14" stroke="#333" stroke-width="0.5"/>
+                    <line x1="49" y1="16" x2="48" y2="14" stroke="#333" stroke-width="0.5"/>
+                    <line x1="51" y1="16" x2="52" y2="14" stroke="#333" stroke-width="0.5"/>
+                    <line x1="55" y1="16" x2="56" y2="14" stroke="#333" stroke-width="0.5"/>
+                    
+                    <!-- Antennae -->
+                    <line x1="47" y1="12" x2="45" y2="8" stroke="#333" stroke-width="1" stroke-linecap="round"/>
+                    <line x1="53" y1="12" x2="55" y2="8" stroke="#333" stroke-width="1" stroke-linecap="round"/>
+                    <circle cx="45" cy="8" r="1" fill="#FF69B4"/>
+                    <circle cx="55" cy="8" r="1" fill="#FF69B4"/>
+                    
+                    <!-- Smile -->
+                    <path d="M 47 22 Q 50 24 53 22" stroke="#333" stroke-width="1" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <!-- Heart (appears when bees meet) -->
+            <div class="heart-container" id="heart-container">
+                <div class="heart-glow"></div>
+                <svg class="heart-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="heartGradient" cx="50%" cy="30%">
+                            <stop offset="0%" style="stop-color:#FF69B4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FF1493;stop-opacity:1" />
+                        </radialGradient>
+                        <filter id="heartShadow">
+                            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#FF69B4" flood-opacity="0.5"/>
+                        </filter>
+                    </defs>
+                    <path d="M50,85 C30,65 10,45 10,25 C10,15 18,5 30,5 C40,5 50,15 50,15 C50,15 60,5 70,5 C82,5 90,15 90,25 C90,45 70,65 50,85z" 
+                          fill="url(#heartGradient)" 
+                          filter="url(#heartShadow)" 
+                          class="heart-path"/>
+                </svg>
+                
+                <!-- Heart Sparkles -->
+                <div class="heart-sparkles">
+                    <div class="sparkle sparkle-1">✨</div>
+                    <div class="sparkle sparkle-2">💖</div>
+                    <div class="sparkle sparkle-3">✨</div>
+                    <div class="sparkle sparkle-4">💕</div>
+                </div>
+            </div>
+
+            <!-- Memory Image (appears before text) -->
+            <div class="memory-image-container" id="memory-image-container">
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=400&h=300&fit=crop&crop=center&auto=format&q=80" 
+                         alt="First meeting on Bumble" 
+                         class="memory-image"
+                         id="memory-image" />
+                    <div class="image-overlay">
+                        <div class="image-title">Our First Connection 💛</div>
+                        <div class="image-subtitle">Swiped right into forever</div>
+                    </div>
+                </div>
+                
+                <!-- Floating hearts around image -->
+                <div class="floating-hearts">
+                    <div class="floating-heart">💛</div>
+                    <div class="floating-heart">💕</div>
+                    <div class="floating-heart">💖</div>
+                    <div class="floating-heart">💛</div>
+                </div>
+            </div>
+
+            <!-- Text Content -->
+            <div class="text-content" id="text-content">
+                <p class="story-text">
+                    We matched on Bumble... and somehow, we just started vibing from the very first day. The first doubt you had was if my name is really Kabobe... 🤭 I couldn’t stop laughing 😂. Then I tried guessing your name… I said Gundamma 🤭 And the funniest part? You actually liked it! It felt so cuteee ...and soon I started calling you tomato, pineapple, munchkinnnn
+                </p>
+                <div class="subtitle">
+                    Our love story started here 💛
+                </div>
+            </div>
+
+            <!-- Music Button -->
+            <button class="music-button" id="music-button" aria-label="Toggle background music">
+                <svg viewBox="0 0 24 24" class="music-icon">
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" fill="currentColor"/>
+                </svg>
+                <svg viewBox="0 0 24 24" class="pause-icon" style="display: none;">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>
+                </svg>
+            </button>
+
+        </div>
+
+        <!-- Audio Element -->
+        <audio id="background-audio" loop preload="none">
+            <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+            <!-- Fallback for bee buzzing sound -->
+        </audio>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-text">Scroll to see the magic ✨</div>
+            <div class="scroll-arrow">↓</div>
+        </div>
+
+    </section>
+
+    <script src="bumble-section.js"></script>
+</body>
+</html> 

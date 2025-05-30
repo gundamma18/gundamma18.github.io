@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memory Lane ✨</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="heart-loader">
+                <div class="heart"></div>
+                <div class="heart"></div>
+                <div class="heart"></div>
+            </div>
+            <h2 class="loader-text">Loading Our Story...</h2>
+        </div>
+    </div>
+
+    <!-- Progress Navigation -->
+    <nav class="memory-nav">
+        <div class="nav-progress">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="nav-dots">
+            <span class="nav-dot active" data-memory="0"></span>
+            <span class="nav-dot" data-memory="1"></span>
+            <span class="nav-dot" data-memory="2"></span>
+            <span class="nav-dot" data-memory="3"></span>
+            <span class="nav-dot" data-memory="4"></span>
+            <span class="nav-dot" data-memory="5"></span>
+            <span class="nav-dot" data-memory="6"></span>
+            <span class="nav-dot" data-memory="7"></span>
+            <span class="nav-dot" data-memory="8"></span>
+            <span class="nav-dot" data-memory="9"></span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Memory 1: Bumble Interaction -->
+        <section class="memory-section bumble-memory" data-memory="0">
+            <div class="background-elements">
+                <div class="bumble-bee bee-1"></div>
+                <div class="bumble-bee bee-2"></div>
+                <div class="chat-bubble bubble-1">Hey there! 👋</div>
+                <div class="chat-bubble bubble-2">Hi! Nice to meet you ✨</div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/bumble-memory.jpg" alt="Our first Bumble interaction" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">The Swipe That Started It All</h2>
+                    <p class="memory-description">
+                        That moment when two hearts found each other in the digital world. 
+                        A simple swipe right that changed everything. Who knew that one little 
+                        bee app could bring together two souls meant to be? 💛
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #1</span>
+                        <button class="audio-btn" data-audio="bumble-audio">🎵</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="bumble-audio" preload="none">
+                <source src="assets/audio/bumble-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Memory 2: First Coffee -->
+        <section class="memory-section coffee-memory" data-memory="1">
+            <div class="background-elements">
+                <div class="coffee-steam steam-1"></div>
+                <div class="coffee-steam steam-2"></div>
+                <div class="coffee-bean bean-1"></div>
+                <div class="coffee-bean bean-2"></div>
+                <div class="coffee-bean bean-3"></div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/coffee-memory.jpg" alt="Our first coffee date" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">Caffeine & Conversations</h2>
+                    <p class="memory-description">
+                        The nervous excitement, the warm coffee, and even warmer smiles. 
+                        That first date where time seemed to stop, and every sip of coffee 
+                        was accompanied by getting to know the most amazing person. ☕
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #2</span>
+                        <button class="audio-btn" data-audio="coffee-audio">🎵</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="coffee-audio" preload="none">
+                <source src="assets/audio/coffee-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Memory 3: Holding Hands Photo -->
+        <section class="memory-section hands-memory" data-memory="2">
+            <div class="background-elements">
+                <div class="floating-heart heart-1"></div>
+                <div class="floating-heart heart-2"></div>
+                <div class="floating-heart heart-3"></div>
+                <div class="sparkle sparkle-1"></div>
+                <div class="sparkle sparkle-2"></div>
+                <div class="sparkle sparkle-3"></div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/hands-memory.jpg" alt="Our hands intertwined" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">The Perfect Fit</h2>
+                    <p class="memory-description">
+                        When your hand found mine, it felt like coming home. 
+                        Two puzzle pieces clicking into place, fingers intertwined 
+                        like they were always meant to be. This is where forever began. 💕
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #3</span>
+                        <button class="audio-btn" data-audio="hands-audio">🎵</button>
+                        <button class="heart-btn interactive-heart">💖</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="hands-audio" preload="none">
+                <source src="assets/audio/hands-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Memory 4: Pineapple/Tomato Nicknames -->
+        <section class="memory-section nicknames-memory" data-memory="3">
+            <div class="background-elements">
+                <div class="fruit pineapple"></div>
+                <div class="fruit tomato"></div>
+                <div class="nickname-text nickname-1">Pineapple 🍍</div>
+                <div class="nickname-text nickname-2">Tomato 🍅</div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/nicknames-memory.jpg" alt="Our cute nicknames" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">Pineapple & Tomato</h2>
+                    <p class="memory-description">
+                        The day we became fruits! Who needs traditional pet names when 
+                        you can be a tropical pineapple and a blushing tomato? 
+                        Our own little inside joke that makes every grocery trip special. 🍍🍅
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #4</span>
+                        <button class="audio-btn" data-audio="nicknames-audio">🎵</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="nicknames-audio" preload="none">
+                <source src="assets/audio/nicknames-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Memory 5: Black-White Dress Meet -->
+        <section class="memory-section dress-memory" data-memory="4">
+            <div class="background-elements">
+                <div class="elegant-line line-1"></div>
+                <div class="elegant-line line-2"></div>
+                <div class="elegant-line line-3"></div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/dress-memory.jpg" alt="Black and white dress moment" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">Timeless Elegance</h2>
+                    <p class="memory-description">
+                        That black and white dress that took my breath away. 
+                        Classic, elegant, stunning - just like the person wearing it. 
+                        Some moments are so perfect they feel like scenes from old movies. 🖤🤍
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #5</span>
+                        <button class="audio-btn" data-audio="dress-audio">🎵</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="dress-audio" preload="none">
+                <source src="assets/audio/dress-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Memory 6: First Video Call -->
+        <section class="memory-section video-memory" data-memory="5">
+            <div class="background-elements">
+                <div class="video-frame frame-1">
+                    <div class="video-placeholder">📹</div>
+                </div>
+                <div class="video-frame frame-2">
+                    <div class="video-placeholder">💻</div>
+                </div>
+                <div class="wifi-signal"></div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/video-memory.jpg" alt="Our first video call" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">Face to Face, Heart to Heart</h2>
+                    <p class="memory-description">
+                        That first video call when pixels became reality. 
+                        Seeing your smile through the screen, the slight lag that 
+                        couldn't delay the instant connection. Technology brought us closer. 💻❤️
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #6</span>
+                        <button class="audio-btn" data-audio="video-audio">🎵</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="video-audio" preload="none">
+                <source src="assets/audio/video-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Memory 7: First Inorbit Mall Meet -->
+        <section class="memory-section mall-memory" data-memory="6">
+            <div class="background-elements">
+                <div class="mall-icon icon-1">🏬</div>
+                <div class="mall-icon icon-2">🛍️</div>
+                <div class="walking-figures">
+                    <div class="figure figure-1"></div>
+                    <div class="figure figure-2"></div>
+                </div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/mall-memory.jpg" alt="First meeting at Inorbit Mall" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">Mall Adventures Begin</h2>
+                    <p class="memory-description">
+                        Inorbit Mall became our playground! Window shopping, food courts, 
+                        and wandering around together. Every corridor held a new conversation, 
+                        every store a new memory waiting to be made. 🛍️✨
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #7</span>
+                        <button class="audio-btn" data-audio="mall-audio">🎵</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="mall-audio" preload="none">
+                <source src="assets/audio/mall-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Memory 8: Future Goals (JPMorgan, Same Car) -->
+        <section class="memory-section dreams-memory" data-memory="7">
+            <div class="background-elements">
+                <div class="dream-element office">🏢</div>
+                <div class="dream-element car">🚗</div>
+                <div class="dream-sparkle sparkle-1">✨</div>
+                <div class="dream-sparkle sparkle-2">✨</div>
+                <div class="dream-sparkle sparkle-3">✨</div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/dreams-memory.jpg" alt="Our future dreams" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">Dreams We Share</h2>
+                    <p class="memory-description">
+                        JPMorgan offices, the same car, shared ambitions and matching goals. 
+                        Planning our future together, dreaming in sync, building castles 
+                        in the air that we'll make real together. 🏢💼🚗
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #8</span>
+                        <button class="audio-btn" data-audio="dreams-audio">🎵</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="dreams-audio" preload="none">
+                <source src="assets/audio/dreams-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Memory 9: Visiting South Korea -->
+        <section class="memory-section korea-memory" data-memory="8">
+            <div class="background-elements">
+                <div class="korean-element hanbok">🥻</div>
+                <div class="korean-element temple">🏛️</div>
+                <div class="korean-element cherry">🌸</div>
+                <div class="travel-icon plane">✈️</div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/korea-memory.jpg" alt="South Korea adventure" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">Seoul Searching Together</h2>
+                    <p class="memory-description">
+                        Cherry blossoms, K-pop beats, and Korean BBQ adventures! 
+                        Exploring Seoul hand in hand, getting lost in palaces, 
+                        and finding ourselves in each other. 한국 사랑해요! 🇰🇷🌸
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #9</span>
+                        <button class="audio-btn" data-audio="korea-audio">🎵</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="korea-audio" preload="none">
+                <source src="assets/audio/korea-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- Memory 10: Future Reading & Gym -->
+        <section class="memory-section future-memory" data-memory="9">
+            <div class="background-elements">
+                <div class="future-split">
+                    <div class="library-side">
+                        <div class="book book-1">📖</div>
+                        <div class="book book-2">📚</div>
+                        <div class="book book-3">📝</div>
+                    </div>
+                    <div class="gym-side">
+                        <div class="weight weight-1">🏋️</div>
+                        <div class="weight weight-2">💪</div>
+                        <div class="weight weight-3">🏃</div>
+                    </div>
+                </div>
+            </div>
+            <div class="memory-content">
+                <div class="memory-image">
+                    <img src="assets/images/future-memory.jpg" alt="Reading and gym future" loading="lazy">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="memory-text">
+                    <h2 class="memory-title">Growing Together</h2>
+                    <p class="memory-description">
+                        Books and barbells, mind and muscle, growing stronger together. 
+                        Reading side by side, then hitting the gym as a team. 
+                        Building our bodies and minds for all the adventures ahead. 📚💪
+                    </p>
+                    <div class="memory-meta">
+                        <span class="memory-date">Memory #10</span>
+                        <button class="audio-btn" data-audio="future-audio">🎵</button>
+                    </div>
+                </div>
+            </div>
+            <audio id="future-audio" preload="none">
+                <source src="assets/audio/future-memory.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
+        <!-- To Be Continued -->
+        <section class="memory-section continue-section">
+            <div class="background-elements">
+                <div class="infinity-symbol">∞</div>
+                <div class="floating-heart final-heart-1"></div>
+                <div class="floating-heart final-heart-2"></div>
+                <div class="floating-heart final-heart-3"></div>
+            </div>
+            <div class="continue-content">
+                <h2 class="continue-title">To Be Continued...</h2>
+                <p class="continue-text">
+                    Our story is just beginning. Every day brings new memories, 
+                    new adventures, new reasons to fall in love all over again.
+                </p>
+                <div class="bookmark">📖</div>
+                <div class="next-chapter">
+                    <span>Next Chapter Loading...</span>
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+</body>
+</html> 

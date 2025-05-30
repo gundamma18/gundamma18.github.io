@@ -1,0 +1,37 @@
+{
+  "name": "memory-lane-website",
+  "version": "1.0.0",
+  "description": "A beautiful, interactive, scrolling memory lane website that tells your love story through animated sections",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'No build required - static site'",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [
+    "memory",
+    "love",
+    "story",
+    "animations",
+    "gsap",
+    "romantic",
+    "website",
+    "static",
+    "github-pages"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/memory-lane-website.git"
+  },
+  "homepage": "https://yourusername.github.io/memory-lane-website",
+  "devDependencies": {
+    "serve": "^14.2.1",
+    "gh-pages": "^6.1.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 
