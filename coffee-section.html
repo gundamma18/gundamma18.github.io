@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Coffee Together ☕</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="coffee-section.css">
+</head>
+<body>
+    <!-- Coffee Section -->
+    <section class="coffee-section" id="coffee-meeting">
+        
+        <!-- Background Elements -->
+        <div class="background-container">
+            <!-- Brick Wall -->
+            <div class="brick-wall"></div>
+            
+            <!-- Edison Bulbs -->
+            <div class="edison-bulbs">
+                <div class="bulb bulb-1">
+                    <div class="bulb-glow"></div>
+                    <div class="filament"></div>
+                </div>
+                <div class="bulb bulb-2">
+                    <div class="bulb-glow"></div>
+                    <div class="filament"></div>
+                </div>
+                <div class="bulb bulb-3">
+                    <div class="bulb-glow"></div>
+                    <div class="filament"></div>
+                </div>
+            </div>
+            
+            <!-- Chalkboard Menu -->
+            <div class="chalkboard">
+                <div class="chalk-text">Today's Special</div>
+                <div class="chalk-heart">💕</div>
+                <div class="chalk-subtitle">Love at First Sip</div>
+            </div>
+            
+            <!-- Floating Coffee Beans -->
+            <div class="coffee-beans-container">
+                <div class="coffee-bean bean-1">☕</div>
+                <div class="coffee-bean bean-2">☕</div>
+                <div class="coffee-bean bean-3">☕</div>
+                <div class="coffee-bean bean-4">☕</div>
+                <div class="coffee-bean bean-5">☕</div>
+            </div>
+            
+            <!-- Window with Rain Effect (Optional) -->
+            <div class="window-container">
+                <div class="rain-drops">
+                    <div class="rain-drop"></div>
+                    <div class="rain-drop"></div>
+                    <div class="rain-drop"></div>
+                    <div class="rain-drop"></div>
+                    <div class="rain-drop"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Coffee Scene -->
+        <div class="coffee-scene">
+            <!-- Coffee Table -->
+            <div class="coffee-table" id="coffee-table">
+                <div class="table-surface"></div>
+                <div class="table-shadow"></div>
+                <div class="table-reflection"></div>
+            </div>
+
+            <!-- Left Coffee Mug -->
+            <div class="mug-container mug-left" id="mug-left">
+                <div class="mug-glow"></div>
+                <svg class="mug-svg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="mugGradient1" cx="50%" cy="30%">
+                            <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+                        </radialGradient>
+                        <filter id="mugShadow">
+                            <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#333" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Mug Body -->
+                    <rect x="30" y="40" width="60" height="80" rx="8" ry="8" 
+                          fill="url(#mugGradient1)" 
+                          filter="url(#mugShadow)" 
+                          class="mug-body"/>
+                    
+                    <!-- Mug Handle -->
+                    <path d="M 90 60 Q 105 65 105 80 Q 105 95 90 100" 
+                          stroke="url(#mugGradient1)" 
+                          stroke-width="8" 
+                          fill="none" 
+                          stroke-linecap="round"/>
+                    
+                    <!-- Coffee Surface -->
+                    <ellipse cx="60" cy="45" rx="25" ry="5" fill="#3E2723" class="coffee-surface"/>
+                    
+                    <!-- Mug Rim -->
+                    <ellipse cx="60" cy="40" rx="30" ry="6" fill="none" stroke="#654321" stroke-width="2"/>
+                </svg>
+                
+                <!-- Steam Animation -->
+                <div class="steam-container steam-left">
+                    <div class="steam-line steam-1"></div>
+                    <div class="steam-line steam-2"></div>
+                    <div class="steam-line steam-3"></div>
+                </div>
+            </div>
+
+            <!-- Right Coffee Mug -->
+            <div class="mug-container mug-right" id="mug-right">
+                <div class="mug-glow"></div>
+                <svg class="mug-svg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="mugGradient2" cx="50%" cy="30%">
+                            <stop offset="0%" style="stop-color:#D2B48C;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#A0522D;stop-opacity:1" />
+                        </radialGradient>
+                    </defs>
+                    
+                    <!-- Mug Body -->
+                    <rect x="30" y="40" width="60" height="80" rx="8" ry="8" 
+                          fill="url(#mugGradient2)" 
+                          filter="url(#mugShadow)" 
+                          class="mug-body"/>
+                    
+                    <!-- Mug Handle -->
+                    <path d="M 30 60 Q 15 65 15 80 Q 15 95 30 100" 
+                          stroke="url(#mugGradient2)" 
+                          stroke-width="8" 
+                          fill="none" 
+                          stroke-linecap="round"/>
+                    
+                    <!-- Coffee Surface -->
+                    <ellipse cx="60" cy="45" rx="25" ry="5" fill="#3E2723" class="coffee-surface"/>
+                    
+                    <!-- Mug Rim -->
+                    <ellipse cx="60" cy="40" rx="30" ry="6" fill="none" stroke="#A0522D" stroke-width="2"/>
+                    
+                    <!-- Heart Design on Mug -->
+                    <path d="M 45 70 Q 45 65 50 65 Q 55 65 55 70 Q 55 75 50 80 Q 45 75 45 70" 
+                          fill="#FF69B4" opacity="0.7"/>
+                </svg>
+                
+                <!-- Steam Animation -->
+                <div class="steam-container steam-right">
+                    <div class="steam-line steam-1"></div>
+                    <div class="steam-line steam-2"></div>
+                    <div class="steam-line steam-3"></div>
+                </div>
+            </div>
+
+            <!-- Heart Steam (appears when mugs meet) -->
+            <div class="heart-steam-container" id="heart-steam">
+                <div class="heart-steam">
+                    <svg viewBox="0 0 100 100" class="heart-steam-svg">
+                        <path d="M50,85 C30,65 10,45 10,25 C10,15 18,5 30,5 C40,5 50,15 50,15 C50,15 60,5 70,5 C82,5 90,15 90,25 C90,45 70,65 50,85z" 
+                              fill="rgba(255,105,180,0.6)" 
+                              class="heart-steam-path"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Coffee Shop Napkin with Message -->
+            <div class="napkin-container" id="napkin">
+                <div class="napkin">
+                    <div class="napkin-text">First coffee ☕</div>
+                    <div class="napkin-subtext">but not the last 💕</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Story Text -->
+        <div class="story-container" id="story-container">
+            <div class="story-text" id="story-text">
+                That awkward laugh, the warm cup, the stolen glance...<br>
+                Our first coffee — simple, yet unforgettable.
+            </div>
+            <div class="story-subtitle">
+                The beginning of our daily ritual 💛
+            </div>
+        </div>
+
+        <!-- Audio Control -->
+        <button class="audio-button" id="audio-button" aria-label="Toggle café ambience">
+            <svg viewBox="0 0 24 24" class="volume-icon">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" fill="currentColor"/>
+            </svg>
+            <svg viewBox="0 0 24 24" class="mute-icon" style="display: none;">
+                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" fill="currentColor"/>
+            </svg>
+        </button>
+
+        <!-- Background Audio -->
+        <audio id="cafe-audio" loop preload="none">
+            <source src="https://www.soundjay.com/misc/sounds/clock-ticking-4.wav" type="audio/wav">
+            <!-- Placeholder for café ambience -->
+        </audio>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-text">Scroll for our first date ☕</div>
+            <div class="scroll-arrow">↓</div>
+        </div>
+
+    </section>
+
+    <script src="coffee-section.js"></script>
+</body>
+</html> 

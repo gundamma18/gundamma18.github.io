@@ -26,7 +26,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 10px; /* Reduced from 20px to 10px to give more space for image */
 }
 
 /* Add moon */
@@ -442,9 +442,10 @@ body {
     text-align: center;
     z-index: 5;
     opacity: 0;
-    max-width: 90%; /* Use more of the available width */
+    max-width: 98%; /* Increased to 98% to maximize available width on mobile */
     width: 100%;
-    padding: 0;
+    padding: 0 1px; /* Reduced padding from 3px to 1px to give more space to image */
+    box-sizing: border-box; /* Ensure padding is included in width calculations */
 }
 
 .image-frame {
@@ -458,14 +459,14 @@ body {
     background: linear-gradient(45deg, 
         rgba(255, 215, 0, 0.15), 
         rgba(255, 105, 180, 0.15));
-    padding: 4px;
+    padding: 2px; /* Reduced from 4px to 2px to give more space to the actual image */
     backdrop-filter: blur(15px);
     border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .memory-image {
     width: 100%;
-    height: 400px; /* Increased significantly from 300px */
+    height: 450px; /* Increased from 300px */
     object-fit: cover;
     border-radius: 21px;
     transition: all 0.8s ease;
@@ -495,14 +496,14 @@ body {
 
 .image-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.8rem; /* Increased from 1.5rem */
+    font-size: 2rem; /* Increased from 1.5rem */
     font-weight: 600;
     margin-bottom: 8px;
     text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
 }
 
 .image-subtitle {
-    font-size: 1.2rem; /* Increased from 1rem */
+    font-size: 1.3rem; /* Increased from 1rem */
     color: #FFD700;
     font-weight: 400;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
@@ -837,7 +838,7 @@ body {
     }
     
     .memory-image-container {
-        max-width: 85%; /* Increased from 500px to percentage */
+        max-width: 96%; /* Increased from 93% to 96% to give more space */
     }
     
     .memory-image {
@@ -899,7 +900,7 @@ body {
     }
     
     .memory-image-container {
-        max-width: 80%; /* Increased from 580px to percentage */
+        max-width: 92%; /* Increased from 88% to 92% to give more space */
     }
     
     .memory-image {
@@ -963,5 +964,21 @@ body {
             #1e1e3f 75%,
             #0f0f23 100%
         );
+    }
+}
+
+/* Small Mobile Devices - Ultra responsive for minimal screen space */
+@media (max-width: 480px) {
+    .bumble-section {
+        padding: 5px; /* Minimal padding for very small screens */
+    }
+    
+    .memory-image-container {
+        max-width: 99%; /* Maximum width for smallest screens */
+        padding: 0; /* Remove all padding to maximize space */
+    }
+    
+    .image-frame {
+        padding: 1px; /* Minimal padding to preserve the border effect */
     }
 } 
