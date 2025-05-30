@@ -1,0 +1,667 @@
+/* Ocean Night Section - Mobile First Design */
+
+/* Font imports for romantic typography */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Quicksand:wght@300;400;500;600&display=swap');
+
+/* Ocean Section Container */
+.ocean-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(
+        180deg,
+        #0a1a2e 0%,
+        #16213e 20%,
+        #1e3a5f 40%,
+        #2e5984 60%,
+        #3e6f8f 80%,
+        #4a7c95 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Night Sky Background */
+.ocean-sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(
+        180deg,
+        #0a0a1a 0%,
+        #1a1a2e 50%,
+        #2a2a4e 100%
+    );
+    z-index: 1;
+}
+
+/* Stars Container */
+.stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    z-index: 2;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+.star:nth-child(1) { top: 5%; left: 10%; animation-delay: 0s; }
+.star:nth-child(2) { top: 8%; left: 25%; animation-delay: 0.5s; }
+.star:nth-child(3) { top: 12%; left: 45%; animation-delay: 1s; }
+.star:nth-child(4) { top: 6%; left: 65%; animation-delay: 1.5s; }
+.star:nth-child(5) { top: 15%; left: 80%; animation-delay: 2s; }
+.star:nth-child(6) { top: 3%; left: 90%; animation-delay: 2.5s; }
+
+@keyframes twinkle {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.2);
+    }
+}
+
+/* Moon */
+.moon {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 35% 35%, #fff, #e6e6e6);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    z-index: 3;
+    animation: moonGlow 4s ease-in-out infinite;
+}
+
+@keyframes moonGlow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Clouds */
+.clouds-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    z-index: 4;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    opacity: 0.6;
+    animation: cloudDrift 20s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+}
+
+.cloud-1 {
+    top: 5%;
+    left: -100px;
+    width: 80px;
+    height: 30px;
+    animation-duration: 25s;
+}
+
+.cloud-1::before {
+    top: -15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.cloud-1::after {
+    top: -10px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+}
+
+.cloud-2 {
+    top: 15%;
+    left: -120px;
+    width: 100px;
+    height: 40px;
+    animation-duration: 30s;
+    animation-delay: -10s;
+}
+
+.cloud-2::before {
+    top: -20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+}
+
+.cloud-2::after {
+    top: -15px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+@keyframes cloudDrift {
+    0% { 
+        transform: translateX(0);
+    }
+    100% { 
+        transform: translateX(calc(100vw + 200px));
+    }
+}
+
+/* Ocean Background */
+.ocean-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(
+        180deg,
+        #2e5984 0%,
+        #1e3a5f 50%,
+        #0f1419 100%
+    );
+    z-index: 5;
+}
+
+/* Ocean Waves */
+.waves-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    z-index: 6;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 C150,30 350,90 600,60 C850,30 1050,90 1200,60 L1200,120 L0,120 Z' fill='%234a7c95'/%3E%3C/svg%3E") repeat-x;
+    animation: waveMove 8s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-child(2) {
+    animation-delay: -2s;
+    animation-duration: 10s;
+    opacity: 0.6;
+    height: 80px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,80 C200,20 400,120 600,80 C800,20 1000,120 1200,80 L1200,120 L0,120 Z' fill='%233e6f8f'/%3E%3C/svg%3E") repeat-x;
+}
+
+.wave:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 12s;
+    opacity: 0.4;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,100 C250,50 450,150 600,100 C750,50 950,150 1200,100 L1200,120 L0,120 Z' fill='%232e5984'/%3E%3C/svg%3E") repeat-x;
+}
+
+@keyframes waveMove {
+    0% { 
+        transform: translateX(0);
+    }
+    100% { 
+        transform: translateX(-600px);
+    }
+}
+
+/* Floating Elements */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 7;
+    pointer-events: none;
+}
+
+.jellyfish {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.7;
+    animation: jellyfishFloat 15s ease-in-out infinite;
+}
+
+.jellyfish:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.jellyfish:nth-child(2) {
+    top: 60%;
+    right: 20%;
+    animation-delay: -5s;
+}
+
+.jellyfish:nth-child(3) {
+    top: 40%;
+    left: 70%;
+    animation-delay: -10s;
+}
+
+@keyframes jellyfishFloat {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-10px) translateX(-5px) rotate(-1deg);
+    }
+    75% {
+        transform: translateY(-30px) translateX(15px) rotate(3deg);
+    }
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 16px;
+    color: rgba(255, 182, 193, 0.8);
+    animation: heartRise 12s ease-out infinite;
+    pointer-events: none;
+}
+
+.floating-heart:nth-child(4) {
+    bottom: 20%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.floating-heart:nth-child(5) {
+    bottom: 30%;
+    right: 10%;
+    animation-delay: -3s;
+}
+
+.floating-heart:nth-child(6) {
+    bottom: 10%;
+    left: 60%;
+    animation-delay: -6s;
+}
+
+@keyframes heartRise {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Central Content */
+.ocean-content {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Memory Image Container */
+.ocean-image-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 2px 8px rgba(255, 255, 255, 0.1);
+    animation: imageFloat 6s ease-in-out infinite;
+    overflow: hidden;
+}
+
+@keyframes imageFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.ocean-image-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    border-radius: 25px;
+    z-index: -1;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+.ocean-memory-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    transition: transform 0.3s ease;
+}
+
+.ocean-image-container:hover .ocean-memory-image {
+    transform: scale(1.05);
+}
+
+/* Text Overlay */
+.ocean-text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+        transparent 0%,
+        rgba(0, 0, 0, 0.3) 30%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+    padding: 40px 20px 20px;
+    border-radius: 0 0 18px 18px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.ocean-image-container:hover .ocean-text-overlay,
+.ocean-text-overlay.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Romantic Text */
+.ocean-romantic-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    line-height: 1.4;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    margin: 0;
+    animation: textFadeIn 2s ease-out 1s both;
+}
+
+@keyframes textFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Story Text Below Image */
+.ocean-story-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    line-height: 1.6;
+    max-width: 350px;
+    margin: 0 auto 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    animation: storyTextSlide 2.5s ease-out 1.5s both;
+}
+
+@keyframes storyTextSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.ocean-subtitle {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    font-weight: 400;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    animation: subtitleFade 3s ease-out 2s both;
+}
+
+@keyframes subtitleFade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Audio Control */
+.ocean-audio-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    transition: all 0.3s ease;
+    font-size: 20px;
+}
+
+.ocean-audio-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.ocean-audio-button.muted {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design - Tablet */
+@media (min-width: 768px) {
+    .ocean-content {
+        max-width: 500px;
+    }
+    
+    .ocean-image-container {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .ocean-romantic-text {
+        font-size: 22px;
+    }
+    
+    .ocean-story-text {
+        font-size: 18px;
+        max-width: 450px;
+    }
+    
+    .ocean-subtitle {
+        font-size: 16px;
+    }
+    
+    .moon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .star {
+        width: 3px;
+        height: 3px;
+    }
+}
+
+/* Responsive Design - Desktop */
+@media (min-width: 1024px) {
+    .ocean-content {
+        max-width: 600px;
+    }
+    
+    .ocean-image-container {
+        width: 400px;
+        height: 400px;
+    }
+    
+    .ocean-romantic-text {
+        font-size: 24px;
+    }
+    
+    .ocean-story-text {
+        font-size: 20px;
+        max-width: 500px;
+    }
+    
+    .ocean-subtitle {
+        font-size: 18px;
+    }
+    
+    .ocean-audio-button {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .moon {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Mobile Optimization */
+@media (max-width: 375px) {
+    .ocean-image-container {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .ocean-romantic-text {
+        font-size: 16px;
+    }
+    
+    .ocean-story-text {
+        font-size: 14px;
+        max-width: 300px;
+    }
+    
+    .ocean-subtitle {
+        font-size: 12px;
+    }
+    
+    .ocean-audio-button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .wave,
+    .jellyfish,
+    .floating-heart,
+    .star,
+    .moon,
+    .cloud {
+        animation: none;
+    }
+    
+    .ocean-image-container {
+        animation: none;
+    }
+}
+
+/* Loading States */
+.ocean-section.loading .ocean-content {
+    opacity: 0;
+}
+
+.ocean-section.loaded .ocean-content {
+    animation: contentFadeIn 1.5s ease-out both;
+}
+
+@keyframes contentFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 

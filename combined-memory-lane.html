@@ -17,6 +17,7 @@
     <!-- Combined Styles -->
     <link rel="stylesheet" href="bumble-section.css">
     <link rel="stylesheet" href="coffee-section.css">
+    <link rel="stylesheet" href="ocean-section.css">
     
     <style>
         /* Global styles for smooth scrolling */
@@ -214,13 +215,14 @@
 <body>
     <!-- Memory Counter -->
     <div class="memory-counter" id="memory-counter">
-        Memory <span id="current-memory">1</span> of <span id="total-memories">2</span>
+        Memory <span id="current-memory">1</span> of <span id="total-memories">3</span>
     </div>
     
     <!-- Navigation Dots -->
     <div class="memory-nav" id="memory-nav">
         <div class="nav-dot active" data-tooltip="First Bumble Meeting" data-section="0"></div>
         <div class="nav-dot" data-tooltip="First Coffee Together" data-section="1"></div>
+        <div class="nav-dot" data-tooltip="Ocean Night Memory" data-section="2"></div>
     </div>
     
     <!-- Memory Wrapper -->
@@ -372,6 +374,16 @@
                         <div class="image-overlay">
                             <div class="image-title">Our First Connection 💛</div>
                             <div class="image-subtitle">Swiped right into forever</div>
+                        </div>
+                        
+                        <!-- Story Text Overlay -->
+                        <div class="story-text-overlay" id="story-text-overlay">
+                            <p class="overlay-story-text">
+                                We matched on Bumble... and somehow, we just started vibing from the very first day. The first doubt you had was if my name is really Kabobe... 🤭 I couldn't stop laughing 😂. Then I tried guessing your name… I said Gundamma 🤭 And the funniest part? You actually liked it! It felt so cuteee ...and soon I started calling you tomato, pineapple, munchkinnnn
+                            </p>
+                            <div class="overlay-subtitle">
+                                Our love story started here 💛
+                            </div>
                         </div>
                     </div>
                     
@@ -738,11 +750,97 @@
             </div>
         </section>
 
+        <!-- Memory 3: Ocean Night Memory Section -->
+        <section class="memory-section ocean-section" id="ocean-memory" data-memory="3">
+            <!-- Ocean Sky Background -->
+            <div class="ocean-sky"></div>
+            
+            <!-- Stars -->
+            <div class="stars-container">
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+                <div class="star"></div>
+            </div>
+            
+            <!-- Moon -->
+            <div class="moon"></div>
+            
+            <!-- Clouds -->
+            <div class="clouds-container">
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+            </div>
+            
+            <!-- Ocean Background -->
+            <div class="ocean-background"></div>
+            
+            <!-- Ocean Waves -->
+            <div class="waves-container">
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+            </div>
+            
+            <!-- Floating Elements -->
+            <div class="floating-elements">
+                <div class="jellyfish">🎐</div>
+                <div class="jellyfish">🌊</div>
+                <div class="jellyfish">🎐</div>
+                <div class="floating-heart">💙</div>
+                <div class="floating-heart">💕</div>
+                <div class="floating-heart">💙</div>
+            </div>
+            
+            <!-- Central Content -->
+            <div class="ocean-content">
+                <!-- Memory Image Container -->
+                <div class="ocean-image-container">
+                    <div class="ocean-image-glow"></div>
+                    <img src="assets/images/ocean-memory.jpg" 
+                         alt="Ocean night memory" 
+                         class="ocean-memory-image" />
+                    
+                    <!-- Text Overlay on Image -->
+                    <div class="ocean-text-overlay">
+                        <p class="ocean-romantic-text">
+                            Like the tides, we were pulled into each other's orbit...
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Story Text Below Image -->
+                <p class="ocean-story-text">
+                    Under the starlit sky, by the endless ocean, we found our peaceful moment together. 
+                    The gentle waves whispered secrets of love, and the moonlight danced on the water 
+                    like our hearts dancing in rhythm.
+                </p>
+                
+                <div class="ocean-subtitle">
+                    Where hearts meet the horizon 🌊💙
+                </div>
+            </div>
+            
+            <!-- Audio Control -->
+            <button class="ocean-audio-button" id="ocean-audio-button" aria-label="Toggle ocean sounds">
+                🔇
+            </button>
+            
+            <!-- Background Audio -->
+            <audio id="ocean-audio" loop preload="none">
+                <source src="https://www.soundjay.com/misc/sounds/ocean-waves.wav" type="audio/wav">
+                <source src="https://assets.mixkit.co/active_storage/sfx/2393/2393-preview.mp3" type="audio/mpeg">
+            </audio>
+        </section>
+
     </div>
 
     <!-- Combined JavaScript -->
     <script src="bumble-section.js"></script>
     <script src="coffee-section.js"></script>
+    <script src="ocean-section.js"></script>
     <script src="combined-memory-lane.js"></script>
 </body>
 </html> 

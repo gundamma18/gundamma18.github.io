@@ -17,7 +17,7 @@ const beeLeft = document.getElementById('bee-left');
 const beeRight = document.getElementById('bee-right');
 const heartContainer = document.getElementById('heart-container');
 const memoryImageContainer = document.getElementById('memory-image-container');
-const textContent = document.getElementById('text-content');
+const textContent = document.getElementById('story-text-overlay');
 const musicButton = document.getElementById('music-button');
 const backgroundAudio = document.getElementById('background-audio');
 const scrollIndicator = document.querySelector('.scroll-indicator');
@@ -269,16 +269,24 @@ function triggerImageAppearance() {
         delay: 0.8
     });
     
-    // Make image overlay appear on hover
+    // Make image overlay visible by default for mobile readability
     setTimeout(() => {
         const imageFrame = document.querySelector('.image-frame');
-        imageFrame.style.cursor = 'pointer';
+        const overlay = imageFrame.querySelector('.image-overlay');
         
-        // Add click interaction for mobile
-        imageFrame.addEventListener('click', () => {
-            const overlay = imageFrame.querySelector('.image-overlay');
-            overlay.style.transform = overlay.style.transform === 'translateY(0px)' ? 'translateY(100%)' : 'translateY(0px)';
-        });
+        if (imageFrame && overlay) {
+            imageFrame.style.cursor = 'pointer';
+            
+            // Ensure overlay is visible by default
+            overlay.style.transform = 'translateY(0px)';
+            overlay.style.opacity = '1';
+            
+            // Add click interaction for enhanced effect on mobile
+            imageFrame.addEventListener('click', () => {
+                // Create sparkle effect instead of hiding/showing text
+                createImageSparkleEffect(imageFrame);
+            });
+        }
     }, 1500);
 }
 
@@ -338,7 +346,7 @@ function triggerTextAppearance() {
     // Remove the automatic image transition - now controlled by scroll
     // No need for heart morph or forced image fade
     
-    textContent.classList.add('text-typing');
+    textContent.classList.add('visible');
     
     gsap.to(textContent, {
         opacity: 1,
@@ -348,7 +356,7 @@ function triggerTextAppearance() {
     });
     
     // Typewriter effect for the main text
-    const storyText = textContent.querySelector('.story-text');
+    const storyText = textContent.querySelector('.overlay-story-text');
     const originalText = storyText.textContent;
     storyText.textContent = '';
     
@@ -366,7 +374,7 @@ function triggerTextAppearance() {
             clearInterval(typeInterval);
             
             // Animate subtitle after main text is complete
-            gsap.fromTo('.subtitle', {
+            gsap.fromTo('.overlay-subtitle', {
                 opacity: 0,
                 y: 15
             }, {
@@ -731,4 +739,38 @@ window.BumbleSection = {
         setupInitialStates();
         ScrollTrigger.refresh();
     }
-}; 
+};
+
+// Create sparkle effect for image clicks
+function createImageSparkleEffect(container) {
+    const sparkles = ['✨', '💛', '💕', '💖', '⭐'];
+    
+    for (let i = 0; i < 6; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+        sparkle.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 18px;
+            pointer-events: none;
+            z-index: 100;
+        `;
+        
+        container.appendChild(sparkle);
+        
+        const angle = (360 / 6) * i;
+        const distance = 60 + Math.random() * 30;
+        
+        gsap.to(sparkle, {
+            x: Math.cos(angle * Math.PI / 180) * distance,
+            y: Math.sin(angle * Math.PI / 180) * distance,
+            opacity: 0,
+            scale: 0.3,
+            rotation: 360,
+            duration: 1.5 + Math.random() * 0.5,
+            ease: "power2.out",
+            onComplete: () => sparkle.remove()
+        });
+    }
+} 

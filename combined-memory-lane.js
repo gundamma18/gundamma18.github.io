@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 // Global state
 const memoryLane = {
     currentSection: 0,
-    totalSections: 2,
+    totalSections: 3,
     isTransitioning: false,
     sectionsData: [
         {
@@ -17,6 +17,11 @@ const memoryLane = {
         {
             id: 'coffee-meeting', 
             name: 'First Coffee Together',
+            element: null
+        },
+        {
+            id: 'ocean-memory',
+            name: 'Ocean Night Memory',
             element: null
         }
     ]
@@ -399,6 +404,9 @@ function onSectionChange(sectionIndex) {
         case 1: // Coffee section
             handleCoffeeSectionEnter();
             break;
+        case 2: // Ocean section
+            handleOceanSectionEnter();
+            break;
     }
     
     // Update page title
@@ -462,6 +470,31 @@ function handleCoffeeSectionEnter() {
             // Create sparkle effect around image
             createImageSparkleEffect(this.parentElement);
         });
+    }
+}
+
+// Ocean section specific handling
+function handleOceanSectionEnter() {
+    // Pause other audio if playing
+    const bumbleAudio = document.getElementById('background-audio');
+    const cafeAudio = document.getElementById('cafe-audio');
+    
+    if (bumbleAudio && !bumbleAudio.paused) {
+        bumbleAudio.pause();
+    }
+    if (cafeAudio && !cafeAudio.paused) {
+        cafeAudio.pause();
+    }
+    
+    // Start ocean ambient sounds if available
+    const oceanAudio = document.getElementById('ocean-audio');
+    if (oceanAudio && oceanAudio.paused) {
+        oceanAudio.play().catch(e => console.log('Ocean audio play failed:', e));
+    }
+    
+    // Enhance ocean animations if available
+    if (window.oceanSection && typeof window.oceanSection.enhanceAnimations === 'function') {
+        window.oceanSection.enhanceAnimations();
     }
 }
 
