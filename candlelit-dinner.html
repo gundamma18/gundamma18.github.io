@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candlelit Beachside Memory 🕯️</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #533483 100%);
+            color: #f4f4f4;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Night Sky Background */
+        .night-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                        linear-gradient(180deg, #0a0a23 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%);
+            z-index: -3;
+        }
+
+        /* Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .star:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 15%; left: 80%; animation-delay: 1s; }
+        .star:nth-child(3) { top: 25%; left: 60%; animation-delay: 2s; }
+        .star:nth-child(4) { top: 30%; left: 15%; animation-delay: 0.5s; }
+        .star:nth-child(5) { top: 40%; left: 85%; animation-delay: 1.5s; }
+        .star:nth-child(6) { top: 20%; left: 45%; animation-delay: 2.5s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Moon */
+        .moon {
+            position: fixed;
+            top: 15%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #ffd700 0%, #ffeb3b  40%, #ffc107 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), 0 0 60px rgba(255, 215, 0, 0.1);
+            z-index: -1;
+            animation: moonGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes moonGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), 0 0 60px rgba(255, 215, 0, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.5), 0 0 80px rgba(255, 215, 0, 0.2); }
+        }
+
+        /* Ocean Waves Background */
+        .ocean-background {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(180deg, rgba(15, 52, 96, 0.8) 0%, rgba(0, 32, 63, 0.9) 100%);
+            z-index: -2;
+        }
+
+        .waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60 L1200,120 L0,120 Z' fill='%23003d66'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            animation: waveAnimation 8s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes waveAnimation {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-50px); }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 60px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Opening Text */
+        .opening-text {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+        }
+
+        .opening-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .opening-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #e0e0e0;
+            line-height: 1.6;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        /* Photo Container */
+        .photo-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            margin: 40px 0;
+            perspective: 1000px;
+            opacity: 0;
+        }
+
+        .photo-frame {
+            position: relative;
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: rotateY(0deg);
+            transition: transform 0.6s ease;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+            animation: candleGlow 3s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes candleGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .dinner-photo {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            text-align: center;
+            line-height: 1.5;
+            padding: 40px 20px;
+            border-radius: 15px;
+        }
+
+        /* Candles */
+        .candles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .candle {
+            position: absolute;
+            width: 20px;
+            height: 40px;
+        }
+
+        .candle-left {
+            top: 20%;
+            left: 10%;
+        }
+
+        .candle-right {
+            top: 30%;
+            right: 15%;
+        }
+
+        .candle-body {
+            width: 8px;
+            height: 30px;
+            background: linear-gradient(to bottom, #8b4513, #654321);
+            border-radius: 4px;
+            margin: 0 auto;
+        }
+
+        .flame {
+            width: 6px;
+            height: 8px;
+            background: radial-gradient(circle, #ffd700 30%, #ff6b35 70%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            margin: -2px auto 0;
+            animation: flicker 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-1deg); }
+            25% { transform: scale(1.1) rotate(1deg); }
+            50% { transform: scale(0.9) rotate(-2deg); }
+            75% { transform: scale(1.05) rotate(1deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-petal {
+            position: absolute;
+            font-size: 12px;
+            opacity: 0.6;
+            animation: float 10s linear infinite;
+        }
+
+        .floating-petal:nth-child(1) { 
+            left: 10%; 
+            animation-delay: 0s; 
+            animation-duration: 8s;
+        }
+        .floating-petal:nth-child(2) { 
+            left: 30%; 
+            animation-delay: 2s; 
+            animation-duration: 12s;
+        }
+        .floating-petal:nth-child(3) { 
+            left: 60%; 
+            animation-delay: 4s; 
+            animation-duration: 10s;
+        }
+        .floating-petal:nth-child(4) { 
+            left: 80%; 
+            animation-delay: 6s; 
+            animation-duration: 9s;
+        }
+
+        @keyframes float {
+            0% { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 0; 
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* Story Text */
+        .story-section {
+            text-align: center;
+            margin: 50px 0;
+            opacity: 0;
+        }
+
+        .story-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            color: #e8e8e8;
+        }
+
+        .story-highlight {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: #ffd700;
+            font-weight: 500;
+            display: block;
+            margin: 20px 0;
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Table Silhouette */
+        .table-silhouette {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 600px;
+            height: 120px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .table-shadow {
+            width: 80%;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            margin: 0 auto;
+            filter: blur(8px);
+        }
+
+        .table-surface {
+            width: 60%;
+            height: 15px;
+            background: linear-gradient(to bottom, #654321, #4a2c17);
+            border-radius: 10px;
+            margin: -10px auto 0;
+        }
+
+        /* Audio Button */
+        .audio-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            color: #ffd700;
+            font-size: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .audio-button:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 40px 15px 30px;
+            }
+
+            .opening-title {
+                font-size: 2rem;
+            }
+
+            .opening-subtitle {
+                font-size: 1rem;
+                max-width: 280px;
+            }
+
+            .photo-container {
+                max-width: 280px;
+            }
+
+            .story-text {
+                font-size: 1.1rem;
+                max-width: 300px;
+            }
+
+            .moon {
+                width: 40px;
+                height: 40px;
+                top: 10%;
+            }
+
+            .audio-button {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 80px 40px 60px;
+            }
+
+            .opening-title {
+                font-size: 3.5rem;
+            }
+
+            .opening-subtitle {
+                font-size: 1.3rem;
+                max-width: 500px;
+            }
+
+            .photo-container {
+                max-width: 450px;
+            }
+
+            .story-text {
+                font-size: 1.4rem;
+                max-width: 550px;
+            }
+
+            .moon {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Night Sky Background -->
+    <div class="night-sky"></div>
+    
+    <!-- Stars -->
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <!-- Moon -->
+    <div class="moon"></div>
+    
+    <!-- Ocean Background -->
+    <div class="ocean-background">
+        <div class="waves"></div>
+    </div>
+    
+    <!-- Table Silhouette -->
+    <div class="table-silhouette">
+        <div class="table-shadow"></div>
+        <div class="table-surface"></div>
+    </div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-petal">🌸</div>
+        <div class="floating-petal">🕯️</div>
+        <div class="floating-petal">🌹</div>
+        <div class="floating-petal">✨</div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Opening Text -->
+        <div class="opening-text">
+            <h1 class="opening-title">That Evening</h1>
+            <p class="opening-subtitle">When the world melted away, and only we remained...</p>
+        </div>
+        
+        <!-- Photo Container -->
+        <div class="photo-container">
+            <div class="photo-frame">
+                <!-- Replace this div with your actual image -->
+                <div class="dinner-photo">
+                    🕯️ Your Candlelit Memory Photo Goes Here 🕯️
+                    <br><br>
+                    Replace this placeholder with:
+                    <br>
+                    &lt;img src="your-dinner-photo.jpg" alt="Candlelit beachside dinner" class="dinner-photo" /&gt;
+                </div>
+                
+                <!-- Candles -->
+                <div class="candles-container">
+                    <div class="candle candle-left">
+                        <div class="candle-body"></div>
+                        <div class="flame"></div>
+                    </div>
+                    <div class="candle candle-right">
+                        <div class="candle-body"></div>
+                        <div class="flame"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Story Section -->
+        <div class="story-section">
+            <p class="story-text">
+                The candles flickered in the gentle breeze, casting dancing shadows on the sand. 
+                <span class="story-highlight">"Two hearts. One night. One little memory."</span>
+                Time stood still as the waves whispered our secrets to the moon.
+            </p>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div>Scroll to feel the magic ✨</div>
+            <div>↓</div>
+        </div>
+    </div>
+    
+    <!-- Audio Button -->
+    <button class="audio-button" id="audio-button" aria-label="Toggle ambient sounds">
+        🔇
+    </button>
+    
+    <!-- Background Audio -->
+    <audio id="ambient-audio" loop preload="none">
+        <source src="https://www.soundjay.com/misc/sounds/ocean-waves.wav" type="audio/wav">
+        <!-- Add your ambient sound file here -->
+    </audio>
+
+    <script>
+        // Register GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Entrance animations
+            gsap.timeline()
+                .to('.opening-text', { opacity: 1, y: 0, duration: 1.5, ease: 'power2.out' })
+                .to('.photo-container', { opacity: 1, scale: 1, duration: 1.2, ease: 'back.out(1.7)' }, '-=0.8')
+                .to('.story-section', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '-=0.6');
+
+            // Scroll-triggered animations
+            ScrollTrigger.create({
+                trigger: '.photo-container',
+                start: 'top 70%',
+                end: 'bottom 30%',
+                scrub: true,
+                animation: gsap.to('.photo-frame', { 
+                    rotateY: 5, 
+                    rotateX: 2, 
+                    duration: 2 
+                })
+            });
+
+            // Moon rise animation
+            ScrollTrigger.create({
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1,
+                animation: gsap.to('.moon', { 
+                    y: -50, 
+                    duration: 3 
+                })
+            });
+
+            // Gentle breeze effect on text
+            gsap.to('.opening-title', {
+                x: 3,
+                duration: 4,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1
+            });
+
+            gsap.to('.story-highlight', {
+                x: -2,
+                duration: 5,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1,
+                delay: 1
+            });
+
+            // Enhanced candle flicker
+            gsap.to('.flame', {
+                scaleY: 0.8,
+                scaleX: 1.1,
+                duration: 0.1,
+                ease: 'power2.inOut',
+                yoyo: true,
+                repeat: -1,
+                repeatDelay: Math.random() * 0.3
+            });
+
+            // Parallax effect for waves
+            ScrollTrigger.create({
+                trigger: 'body',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+                animation: gsap.to('.waves', { 
+                    x: -100, 
+                    duration: 3 
+                })
+            });
+
+            // Audio control
+            const audioButton = document.getElementById('audio-button');
+            const ambientAudio = document.getElementById('ambient-audio');
+            let isPlaying = false;
+
+            audioButton.addEventListener('click', function() {
+                if (isPlaying) {
+                    ambientAudio.pause();
+                    audioButton.textContent = '🔇';
+                    isPlaying = false;
+                } else {
+                    ambientAudio.play().catch(e => console.log('Audio play failed:', e));
+                    audioButton.textContent = '🔊';
+                    isPlaying = true;
+                }
+            });
+
+            // Smooth scroll behavior
+            document.addEventListener('wheel', function(e) {
+                if (Math.abs(e.deltaY) > 50) {
+                    e.preventDefault();
+                    window.scrollBy({
+                        top: e.deltaY * 0.5,
+                        behavior: 'smooth'
+                    });
+                }
+            }, { passive: false });
+
+            // Touch gestures for mobile
+            let touchStartY = 0;
+            let touchEndY = 0;
+
+            document.addEventListener('touchstart', function(e) {
+                touchStartY = e.changedTouches[0].screenY;
+            });
+
+            document.addEventListener('touchend', function(e) {
+                touchEndY = e.changedTouches[0].screenY;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartY - touchEndY;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swipe up
+                        window.scrollBy({ top: 100, behavior: 'smooth' });
+                    } else {
+                        // Swipe down
+                        window.scrollBy({ top: -100, behavior: 'smooth' });
+                    }
+                }
+            }
+
+            // Auto-scroll on initial load for dramatic effect
+            setTimeout(() => {
+                window.scrollBy({ top: 50, behavior: 'smooth' });
+            }, 3000);
+        });
+
+        // Intersection Observer for fade-in effects
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    gsap.to(entry.target, { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 0.8, 
+                        ease: 'power2.out' 
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe elements for scroll-triggered animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToObserve = document.querySelectorAll('.story-section, .photo-container');
+            elementsToObserve.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html> 

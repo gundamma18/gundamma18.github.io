@@ -210,12 +210,999 @@
                 width: 250px;
             }
         }
+
+        /* Candlelit Dinner Section Styles */
+        .candlelit-dinner-section {
+            font-family: 'Cormorant Garamond', serif;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(255, 140, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(255, 165, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 90%, rgba(139, 69, 19, 0.3) 0%, transparent 70%),
+                linear-gradient(180deg, #0a0f1c 0%, #1a1f2e 20%, #2c1810 60%, #1a0f08 100%);
+            color: #f4f4f4;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Enhanced Night Sky Background */
+        .candlelit-night-sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 75% 30%, rgba(255, 140, 0, 0.06) 0%, transparent 30%),
+                radial-gradient(circle at 60% 15%, rgba(135, 206, 235, 0.03) 0%, transparent 40%),
+                linear-gradient(180deg, 
+                    #0a0f1c 0%, 
+                    #1a1f2e 15%, 
+                    #2c2416 40%, 
+                    #3d2817 60%, 
+                    #2c1810 80%, 
+                    #1a0f08 100%);
+            z-index: -3;
+        }
+
+        /* Beach Sand Texture */
+        .candlelit-night-sky::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35%;
+            background: 
+                radial-gradient(ellipse at 30% 100%, rgba(255, 140, 0, 0.2) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 100%, rgba(255, 165, 0, 0.15) 0%, transparent 50%),
+                linear-gradient(180deg, transparent 0%, rgba(139, 69, 19, 0.4) 30%, rgba(101, 67, 33, 0.6) 70%, rgba(62, 39, 35, 0.8) 100%);
+            background-size: 200px 100px, 300px 150px, 100% 100%;
+            animation: candlelitSandShimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes candlelitSandShimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0.9; }
+        }
+
+        /* Palm Trees Silhouettes */
+        .candlelit-night-sky::after {
+            content: '';
+            position: absolute;
+            bottom: 15%;
+            left: 5%;
+            width: 40px;
+            height: 120px;
+            background: 
+                linear-gradient(to top, transparent 0%, rgba(20, 20, 20, 0.8) 20%, rgba(15, 15, 15, 0.9) 100%);
+            border-radius: 0 0 50% 50%;
+            transform: rotate(-5deg);
+            box-shadow: 
+                150px -20px 0 -5px rgba(15, 15, 15, 0.7),
+                300px 10px 0 -8px rgba(20, 20, 20, 0.6),
+                450px -15px 0 -10px rgba(15, 15, 15, 0.5);
+        }
+
+        /* Palm Tree Leaves */
+        .candlelit-dinner-section .palm-leaves {
+            position: absolute;
+            bottom: 35%;
+            left: 8%;
+            width: 100px;
+            height: 60px;
+            z-index: -1;
+        }
+
+        .palm-leaves::before,
+        .palm-leaves::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: rgba(20, 40, 20, 0.8);
+            border-radius: 50px;
+            transform-origin: left center;
+        }
+
+        .palm-leaves::before {
+            transform: rotate(-30deg);
+            box-shadow: 
+                0 0 0 rgba(20, 40, 20, 0.8),
+                5px -10px 0 rgba(20, 40, 20, 0.7),
+                -5px 10px 0 rgba(20, 40, 20, 0.6),
+                10px -20px 0 rgba(20, 40, 20, 0.5);
+            animation: palmSway 8s ease-in-out infinite;
+        }
+
+        .palm-leaves::after {
+            transform: rotate(30deg);
+            box-shadow: 
+                0 0 0 rgba(20, 40, 20, 0.8),
+                -5px -10px 0 rgba(20, 40, 20, 0.7),
+                5px 10px 0 rgba(20, 40, 20, 0.6),
+                -10px -20px 0 rgba(20, 40, 20, 0.5);
+            animation: palmSway 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes palmSway {
+            0%, 100% { transform: rotate(-30deg); }
+            50% { transform: rotate(-20deg); }
+        }
+
+        /* Beach Bonfire */
+        .beach-bonfire {
+            position: absolute;
+            bottom: 20%;
+            right: 15%;
+            width: 60px;
+            height: 80px;
+            z-index: -1;
+        }
+
+        .bonfire-logs {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 15px;
+            background: linear-gradient(to right, rgba(101, 67, 33, 0.8), rgba(139, 69, 19, 0.6));
+            border-radius: 20px;
+        }
+
+        .bonfire-logs::before,
+        .bonfire-logs::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 12px;
+            background: linear-gradient(to right, rgba(139, 69, 19, 0.7), rgba(101, 67, 33, 0.5));
+            border-radius: 15px;
+        }
+
+        .bonfire-logs::before {
+            top: -8px;
+            left: -5px;
+            transform: rotate(-20deg);
+        }
+
+        .bonfire-logs::after {
+            top: -6px;
+            right: -5px;
+            transform: rotate(25deg);
+        }
+
+        .bonfire-flame {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 40px;
+            background: 
+                radial-gradient(ellipse at center bottom, 
+                    rgba(255, 69, 0, 0.9) 0%, 
+                    rgba(255, 140, 0, 0.8) 30%, 
+                    rgba(255, 215, 0, 0.6) 60%, 
+                    transparent 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: bonfireFlicker 2s ease-in-out infinite alternate;
+        }
+
+        .bonfire-flame::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 25px;
+            background: 
+                radial-gradient(ellipse at center bottom, 
+                    rgba(255, 140, 0, 0.8) 0%, 
+                    rgba(255, 215, 0, 0.6) 50%, 
+                    transparent 80%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: bonfireFlicker 1.5s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes bonfireFlicker {
+            0% { transform: translateX(-50%) scale(1) rotate(-2deg); opacity: 0.8; }
+            25% { transform: translateX(-50%) scale(1.1) rotate(1deg); opacity: 1; }
+            50% { transform: translateX(-50%) scale(0.9) rotate(-1deg); opacity: 0.9; }
+            75% { transform: translateX(-50%) scale(1.05) rotate(2deg); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1) rotate(0deg); opacity: 0.8; }
+        }
+
+        /* Bonfire Light Glow */
+        .bonfire-glow {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.3) 0%, transparent 70%);
+            animation: bonfireGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes bonfireGlow {
+            0% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.2); }
+        }
+
+        /* Seashells scattered on beach */
+        .beach-shells {
+            position: absolute;
+            bottom: 12%;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            z-index: -1;
+        }
+
+        .shell {
+            position: absolute;
+            width: 8px;
+            height: 6px;
+            background: rgba(245, 245, 220, 0.6);
+            border-radius: 50% 0 50% 50%;
+            transform: rotate(45deg);
+        }
+
+        .shell:nth-child(1) { bottom: 20%; left: 20%; transform: rotate(15deg) scale(0.8); }
+        .shell:nth-child(2) { bottom: 15%; left: 45%; transform: rotate(75deg) scale(1.2); }
+        .shell:nth-child(3) { bottom: 25%; left: 65%; transform: rotate(-30deg) scale(0.9); }
+        .shell:nth-child(4) { bottom: 18%; left: 80%; transform: rotate(120deg) scale(1.1); }
+        .shell:nth-child(5) { bottom: 22%; left: 35%; transform: rotate(-60deg) scale(0.7); }
+
+        /* Driftwood */
+        .driftwood {
+            position: absolute;
+            bottom: 15%;
+            left: 25%;
+            width: 80px;
+            height: 8px;
+            background: linear-gradient(to right, rgba(101, 67, 33, 0.7), rgba(139, 69, 19, 0.5));
+            border-radius: 10px;
+            transform: rotate(-15deg);
+            z-index: -1;
+        }
+
+        .driftwood::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            right: -10px;
+            width: 25px;
+            height: 6px;
+            background: linear-gradient(to right, rgba(139, 69, 19, 0.6), rgba(101, 67, 33, 0.4));
+            border-radius: 8px;
+            transform: rotate(45deg);
+        }
+
+        /* Fireflies */
+        .fireflies {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .firefly {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 0, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255, 255, 0, 0.6);
+            animation: fireflyFloat 8s ease-in-out infinite;
+        }
+
+        .firefly:nth-child(1) { top: 30%; left: 15%; animation-delay: 0s; animation-duration: 6s; }
+        .firefly:nth-child(2) { top: 45%; left: 70%; animation-delay: 2s; animation-duration: 8s; }
+        .firefly:nth-child(3) { top: 25%; left: 50%; animation-delay: 4s; animation-duration: 7s; }
+        .firefly:nth-child(4) { top: 60%; left: 30%; animation-delay: 1s; animation-duration: 9s; }
+        .firefly:nth-child(5) { top: 35%; left: 85%; animation-delay: 3s; animation-duration: 5s; }
+
+        @keyframes fireflyFloat {
+            0%, 100% { 
+                transform: translate(0, 0); 
+                opacity: 0.3; 
+            }
+            25% { 
+                transform: translate(20px, -15px); 
+                opacity: 1; 
+            }
+            50% { 
+                transform: translate(-10px, -30px); 
+                opacity: 0.6; 
+            }
+            75% { 
+                transform: translate(15px, -10px); 
+                opacity: 0.9; 
+            }
+        }
+
+        /* Beach Grass */
+        .beach-grass {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            width: 100%;
+            height: 30px;
+            z-index: -1;
+        }
+
+        .grass-blade {
+            position: absolute;
+            width: 2px;
+            height: 25px;
+            background: linear-gradient(to top, rgba(34, 70, 34, 0.8), rgba(50, 100, 50, 0.6));
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+            animation: grassSway 6s ease-in-out infinite;
+        }
+
+        .grass-blade:nth-child(1) { left: 0%; animation-delay: 0s; }
+        .grass-blade:nth-child(2) { left: 2%; animation-delay: 0.5s; height: 20px; }
+        .grass-blade:nth-child(3) { left: 4%; animation-delay: 1s; height: 28px; }
+        .grass-blade:nth-child(4) { left: 85%; animation-delay: 1.5s; }
+        .grass-blade:nth-child(5) { left: 87%; animation-delay: 2s; height: 22px; }
+        .grass-blade:nth-child(6) { left: 89%; animation-delay: 2.5s; height: 26px; }
+
+        @keyframes grassSway {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            50% { transform: rotate(-2deg); }
+            75% { transform: rotate(4deg); }
+        }
+
+        /* Footprints in sand */
+        .footprints {
+            position: absolute;
+            bottom: 18%;
+            left: 40%;
+            width: 200px;
+            height: 50px;
+            z-index: -1;
+        }
+
+        .footprint {
+            position: absolute;
+            width: 12px;
+            height: 18px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: rotate(-10deg);
+        }
+
+        .footprint::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 50%;
+            box-shadow: 
+                4px 0 0 rgba(0, 0, 0, 0.15),
+                2px -2px 0 rgba(0, 0, 0, 0.1),
+                6px -2px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .footprint:nth-child(1) { left: 0; top: 0; }
+        .footprint:nth-child(2) { left: 25px; top: 15px; transform: rotate(5deg); }
+        .footprint:nth-child(3) { left: 45px; top: 5px; transform: rotate(-15deg); }
+        .footprint:nth-child(4) { left: 70px; top: 20px; transform: rotate(8deg); }
+
+        /* Moon reflection on water */
+        .moon-reflection {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 45%;
+            background: 
+                linear-gradient(to bottom, 
+                    transparent 0%, 
+                    rgba(255, 215, 0, 0.05) 30%, 
+                    rgba(255, 215, 0, 0.1) 60%, 
+                    rgba(255, 215, 0, 0.15) 100%);
+            z-index: -2;
+            animation: moonReflectionShimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes moonReflectionShimmer {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Enhanced stars with constellations */
+        .candlelit-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .candlelit-star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: candlelitTwinkle 3s ease-in-out infinite;
+        }
+
+        .candlelit-star:nth-child(1) { top: 8%; left: 15%; width: 2px; height: 2px; animation-delay: 0s; box-shadow: 0 0 6px rgba(255,255,255,0.8); }
+        .candlelit-star:nth-child(2) { top: 12%; left: 85%; width: 1px; height: 1px; animation-delay: 1s; }
+        .candlelit-star:nth-child(3) { top: 20%; left: 65%; width: 3px; height: 3px; animation-delay: 2s; box-shadow: 0 0 8px rgba(255,255,255,0.6); }
+        .candlelit-star:nth-child(4) { top: 25%; left: 10%; width: 1px; height: 1px; animation-delay: 0.5s; }
+        .candlelit-star:nth-child(5) { top: 35%; left: 90%; width: 2px; height: 2px; animation-delay: 1.5s; box-shadow: 0 0 4px rgba(255,255,255,0.7); }
+        .candlelit-star:nth-child(6) { top: 15%; left: 40%; width: 1px; height: 1px; animation-delay: 2.5s; }
+
+        /* Add more stars for constellation effect */
+        .candlelit-star:nth-child(7) { top: 18%; left: 42%; width: 1px; height: 1px; animation-delay: 3s; }
+        .candlelit-star:nth-child(8) { top: 22%; left: 38%; width: 1px; height: 1px; animation-delay: 3.5s; }
+        .candlelit-star:nth-child(9) { top: 6%; left: 75%; width: 2px; height: 2px; animation-delay: 4s; box-shadow: 0 0 5px rgba(255,255,255,0.5); }
+        .candlelit-star:nth-child(10) { top: 30%; left: 25%; width: 1px; height: 1px; animation-delay: 4.5s; }
+
+        @keyframes candlelitTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Enhanced Moon with realistic glow */
+        .candlelit-moon {
+            position: absolute;
+            top: 12%;
+            right: 15%;
+            width: 70px;
+            height: 70px;
+            background: 
+                radial-gradient(circle at 35% 35%, #fff8dc 0%, #ffd700 30%, #ffb347 70%, #cd853f 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.4), 
+                0 0 40px rgba(255, 215, 0, 0.2),
+                0 0 80px rgba(255, 215, 0, 0.1),
+                inset -10px -10px 0 rgba(205, 133, 63, 0.3);
+            z-index: -1;
+            animation: candlelitMoonGlow 6s ease-in-out infinite;
+        }
+
+        /* Moon craters */
+        .candlelit-moon::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 25%;
+            width: 8px;
+            height: 8px;
+            background: rgba(205, 133, 63, 0.4);
+            border-radius: 50%;
+            box-shadow: 
+                15px 10px 0 -2px rgba(205, 133, 63, 0.3),
+                -5px 20px 0 -3px rgba(205, 133, 63, 0.2);
+        }
+
+        @keyframes candlelitMoonGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 20px rgba(255, 215, 0, 0.4), 
+                    0 0 40px rgba(255, 215, 0, 0.2),
+                    0 0 80px rgba(255, 215, 0, 0.1),
+                    inset -10px -10px 0 rgba(205, 133, 63, 0.3);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 30px rgba(255, 215, 0, 0.6), 
+                    0 0 60px rgba(255, 215, 0, 0.3),
+                    0 0 120px rgba(255, 215, 0, 0.15),
+                    inset -10px -10px 0 rgba(205, 133, 63, 0.3);
+            }
+        }
+
+        /* Enhanced Ocean with more realistic waves */
+        .candlelit-ocean-background {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 45%;
+            background: 
+                linear-gradient(180deg, 
+                    rgba(15, 52, 96, 0.0) 0%, 
+                    rgba(15, 52, 96, 0.3) 20%,
+                    rgba(0, 32, 63, 0.7) 60%, 
+                    rgba(0, 20, 40, 0.9) 100%);
+            z-index: -2;
+        }
+
+        .candlelit-waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 120px;
+            background: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 C200,100 400,20 600,60 C800,100 1000,20 1200,60 L1200,120 L0,120 Z' fill='%23001428'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,80 C300,120 500,40 800,80 C900,100 1100,60 1200,80 L1200,120 L0,120 Z' fill='%23002244'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            background-position: 0 0, 100px 10px;
+            animation: candlelitWaveAnimation 12s ease-in-out infinite, candlelitWaveAnimation2 8s ease-in-out infinite reverse;
+            opacity: 0.8;
+        }
+
+        @keyframes candlelitWaveAnimation {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-50px); }
+        }
+
+        @keyframes candlelitWaveAnimation2 {
+            0%, 100% { background-position: 0 0, 100px 10px; }
+            50% { background-position: -100px 0, 0px 10px; }
+        }
+
+        /* Candlelight Ambience Effects */
+        .candlelit-dinner-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 25% 70%, rgba(255, 140, 0, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 75% 75%, rgba(255, 165, 0, 0.12) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 80%, rgba(255, 69, 0, 0.08) 0%, transparent 50%);
+            animation: candlelitAmbientGlow 4s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes candlelitAmbientGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        /* Beach Elements */
+        .candlelit-dinner-section::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+            width: 15px;
+            height: 8px;
+            background: rgba(139, 69, 19, 0.6);
+            border-radius: 50%;
+            box-shadow: 
+                200px 20px 0 -2px rgba(160, 82, 45, 0.4),
+                350px -10px 0 -3px rgba(139, 69, 19, 0.5),
+                500px 15px 0 -1px rgba(160, 82, 45, 0.3),
+                80px -5px 0 -4px rgba(139, 69, 19, 0.3);
+            animation: candlelitSandParticles 15s linear infinite;
+        }
+
+        @keyframes candlelitSandParticles {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(20px); }
+        }
+
+        /* Enhanced Photo Frame Glow */
+        .candlelit-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle, 
+                    rgba(255, 140, 0, 0.3) 0%, 
+                    rgba(255, 165, 0, 0.2) 20%, 
+                    rgba(255, 69, 0, 0.1) 40%, 
+                    transparent 70%);
+            animation: candlelitCandleGlow 3s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+            filter: blur(2px);
+        }
+
+        @keyframes candlelitCandleGlow {
+            0%, 100% { 
+                opacity: 0.4; 
+                transform: scale(1) rotate(0deg); 
+            }
+            33% { 
+                opacity: 0.7; 
+                transform: scale(1.1) rotate(1deg); 
+            }
+            66% { 
+                opacity: 0.5; 
+                transform: scale(0.95) rotate(-1deg); 
+            }
+        }
+
+        /* Enhanced Table Silhouette with beach table */
+        .candlelit-table-silhouette {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 600px;
+            height: 150px;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .candlelit-table-shadow {
+            width: 85%;
+            height: 25px;
+            background: 
+                radial-gradient(ellipse, 
+                    rgba(0, 0, 0, 0.6) 0%, 
+                    rgba(139, 69, 19, 0.4) 30%, 
+                    transparent 70%);
+            border-radius: 50%;
+            margin: 0 auto;
+            filter: blur(12px);
+        }
+
+        .candlelit-table-surface {
+            width: 65%;
+            height: 18px;
+            background: 
+                linear-gradient(to bottom, 
+                    rgba(160, 82, 45, 0.8) 0%, 
+                    rgba(139, 69, 19, 0.9) 50%, 
+                    rgba(101, 67, 33, 0.7) 100%);
+            border-radius: 12px;
+            margin: -15px auto 0;
+            position: relative;
+        }
+
+        /* Table legs */
+        .candlelit-table-surface::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 15%;
+            width: 4px;
+            height: 20px;
+            background: rgba(101, 67, 33, 0.6);
+            box-shadow: 
+                calc(70% - 4px) 0 0 rgba(101, 67, 33, 0.6);
+        }
+
+        /* Main Container */
+        .candlelit-container {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 60px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        /* Opening Text */
+        .candlelit-opening-text {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+        }
+
+        .candlelit-opening-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .candlelit-opening-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #e0e0e0;
+            line-height: 1.6;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        /* Photo Container */
+        .candlelit-photo-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            margin: 40px 0;
+            perspective: 1000px;
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .candlelit-photo-frame {
+            position: relative;
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transform: rotateY(0deg);
+            transition: transform 0.6s ease;
+        }
+
+        .candlelit-dinner-photo {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            text-align: center;
+            line-height: 1.5;
+            padding: 40px 20px;
+            border-radius: 15px;
+        }
+
+        /* Candles */
+        .candlelit-candles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .candlelit-candle {
+            position: absolute;
+            width: 20px;
+            height: 40px;
+        }
+
+        .candlelit-candle-left {
+            top: 20%;
+            left: 10%;
+        }
+
+        .candlelit-candle-right {
+            top: 30%;
+            right: 15%;
+        }
+
+        .candlelit-candle-body {
+            width: 8px;
+            height: 30px;
+            background: linear-gradient(to bottom, #8b4513, #654321);
+            border-radius: 4px;
+            margin: 0 auto;
+        }
+
+        .candlelit-flame {
+            width: 6px;
+            height: 8px;
+            background: radial-gradient(circle, #ffd700 30%, #ff6b35 70%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            margin: -2px auto 0;
+            animation: candlelitFlicker 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes candlelitFlicker {
+            0% { transform: scale(1) rotate(-1deg); }
+            25% { transform: scale(1.1) rotate(1deg); }
+            50% { transform: scale(0.9) rotate(-2deg); }
+            75% { transform: scale(1.05) rotate(1deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        /* Floating Elements */
+        .candlelit-floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .candlelit-floating-petal {
+            position: absolute;
+            font-size: 12px;
+            opacity: 0.6;
+            animation: candlelitFloat 10s linear infinite;
+        }
+
+        .candlelit-floating-petal:nth-child(1) { 
+            left: 10%; 
+            animation-delay: 0s; 
+            animation-duration: 8s;
+        }
+        .candlelit-floating-petal:nth-child(2) { 
+            left: 30%; 
+            animation-delay: 2s; 
+            animation-duration: 12s;
+        }
+        .candlelit-floating-petal:nth-child(3) { 
+            left: 60%; 
+            animation-delay: 4s; 
+            animation-duration: 10s;
+        }
+        .candlelit-floating-petal:nth-child(4) { 
+            left: 80%; 
+            animation-delay: 6s; 
+            animation-duration: 9s;
+        }
+
+        @keyframes candlelitFloat {
+            0% { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 0; 
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* Story Text */
+        .candlelit-story-section {
+            text-align: center;
+            margin: 50px 0;
+            opacity: 0;
+        }
+
+        .candlelit-story-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            color: #e8e8e8;
+        }
+
+        .candlelit-story-highlight {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            color: #ffd700;
+            font-weight: 500;
+            display: block;
+            margin: 20px 0;
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Audio Button */
+        .candlelit-audio-button {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            color: #ffd700;
+            font-size: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .candlelit-audio-button:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Scroll Indicator */
+        .candlelit-scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            animation: candlelitBounce 2s infinite;
+        }
+
+        @keyframes candlelitBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Responsive Design for Candlelit Section */
+        @media (max-width: 480px) {
+            .candlelit-container {
+                padding: 40px 15px 30px;
+            }
+
+            .candlelit-opening-title {
+                font-size: 2rem;
+            }
+
+            .candlelit-opening-subtitle {
+                font-size: 1rem;
+                max-width: 280px;
+            }
+
+            .candlelit-photo-container {
+                max-width: 280px;
+            }
+
+            .candlelit-story-text {
+                font-size: 1.1rem;
+                max-width: 300px;
+            }
+
+            .candlelit-moon {
+                width: 50px;
+                height: 50px;
+                top: 10%;
+            }
+
+            .candlelit-audio-button {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .candlelit-container {
+                padding: 80px 40px 60px;
+            }
+
+            .candlelit-opening-title {
+                font-size: 3.5rem;
+            }
+
+            .candlelit-opening-subtitle {
+                font-size: 1.3rem;
+                max-width: 500px;
+            }
+
+            .candlelit-photo-container {
+                max-width: 450px;
+            }
+
+            .candlelit-story-text {
+                font-size: 1.4rem;
+                max-width: 550px;
+            }
+
+            .candlelit-moon {
+                width: 80px;
+                height: 80px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Memory Counter -->
     <div class="memory-counter" id="memory-counter">
-        Memory <span id="current-memory">1</span> of <span id="total-memories">3</span>
+        Memory <span id="current-memory">1</span> of <span id="total-memories">4</span>
     </div>
     
     <!-- Navigation Dots -->
@@ -223,6 +1210,7 @@
         <div class="nav-dot active" data-tooltip="First Bumble Meeting" data-section="0"></div>
         <div class="nav-dot" data-tooltip="First Coffee Together" data-section="1"></div>
         <div class="nav-dot" data-tooltip="Ocean Night Memory" data-section="2"></div>
+        <div class="nav-dot" data-tooltip="Candlelit Beachside Dinner" data-section="3"></div>
     </div>
     
     <!-- Memory Wrapper -->
@@ -835,6 +1823,160 @@
             </audio>
         </section>
 
+        <!-- Memory 4: Candlelit Beachside Dinner Section -->
+        <section class="memory-section candlelit-dinner-section" id="candlelit-dinner" data-memory="4">
+            <!-- Night Sky Background -->
+            <div class="candlelit-night-sky"></div>
+            
+            <!-- Stars -->
+            <div class="candlelit-stars">
+                <div class="candlelit-star"></div>
+                <div class="candlelit-star"></div>
+                <div class="candlelit-star"></div>
+                <div class="candlelit-star"></div>
+                <div class="candlelit-star"></div>
+                <div class="candlelit-star"></div>
+                <div class="candlelit-star"></div>
+                <div class="candlelit-star"></div>
+                <div class="candlelit-star"></div>
+                <div class="candlelit-star"></div>
+            </div>
+            
+            <!-- Moon -->
+            <div class="candlelit-moon"></div>
+            
+            <!-- Moon Reflection on Water -->
+            <div class="moon-reflection"></div>
+            
+            <!-- Ocean Background -->
+            <div class="candlelit-ocean-background">
+                <div class="candlelit-waves"></div>
+            </div>
+            
+            <!-- Palm Tree Leaves -->
+            <div class="palm-leaves"></div>
+            
+            <!-- Beach Bonfire -->
+            <div class="beach-bonfire">
+                <div class="bonfire-glow"></div>
+                <div class="bonfire-logs"></div>
+                <div class="bonfire-flame"></div>
+            </div>
+            
+            <!-- Beach Shells -->
+            <div class="beach-shells">
+                <div class="shell"></div>
+                <div class="shell"></div>
+                <div class="shell"></div>
+                <div class="shell"></div>
+                <div class="shell"></div>
+            </div>
+            
+            <!-- Driftwood -->
+            <div class="driftwood"></div>
+            
+            <!-- Beach Grass -->
+            <div class="beach-grass">
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+                <div class="grass-blade"></div>
+            </div>
+            
+            <!-- Footprints in Sand -->
+            <div class="footprints">
+                <div class="footprint"></div>
+                <div class="footprint"></div>
+                <div class="footprint"></div>
+                <div class="footprint"></div>
+            </div>
+            
+            <!-- Fireflies -->
+            <div class="fireflies">
+                <div class="firefly"></div>
+                <div class="firefly"></div>
+                <div class="firefly"></div>
+                <div class="firefly"></div>
+                <div class="firefly"></div>
+            </div>
+            
+            <!-- Table Silhouette -->
+            <div class="candlelit-table-silhouette">
+                <div class="candlelit-table-shadow"></div>
+                <div class="candlelit-table-surface"></div>
+            </div>
+            
+            <!-- Floating Elements -->
+            <div class="candlelit-floating-elements">
+                <div class="candlelit-floating-petal">🌸</div>
+                <div class="candlelit-floating-petal">🕯️</div>
+                <div class="candlelit-floating-petal">🌹</div>
+                <div class="candlelit-floating-petal">✨</div>
+            </div>
+            
+            <!-- Main Container -->
+            <div class="candlelit-container">
+                <!-- Opening Text -->
+                <div class="candlelit-opening-text">
+                    <h1 class="candlelit-opening-title">That Evening</h1>
+                    <p class="candlelit-opening-subtitle">When the world melted away, and only we remained...</p>
+                </div>
+                
+                <!-- Photo Container -->
+                <div class="candlelit-photo-container">
+                    <div class="candlelit-photo-frame">
+                        <!-- Replace this div with your actual image -->
+                        <div class="candlelit-dinner-photo">
+                            🕯️ Your Candlelit Memory Photo Goes Here 🕯️
+                            <br><br>
+                            Replace this placeholder with:
+                            <br>
+                            &lt;img src="your-dinner-photo.jpg" alt="Candlelit beachside dinner" class="candlelit-dinner-photo" /&gt;
+                        </div>
+                        
+                        <!-- Candles -->
+                        <div class="candlelit-candles-container">
+                            <div class="candlelit-candle candlelit-candle-left">
+                                <div class="candlelit-candle-body"></div>
+                                <div class="candlelit-flame"></div>
+                            </div>
+                            <div class="candlelit-candle candlelit-candle-right">
+                                <div class="candlelit-candle-body"></div>
+                                <div class="candlelit-flame"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Story Section -->
+                <div class="candlelit-story-section">
+                    <p class="candlelit-story-text">
+                        The candles flickered in the gentle breeze, casting dancing shadows on the sand. 
+                        <span class="candlelit-story-highlight">"Two hearts. One night. One little memory."</span>
+                        Time stood still as the waves whispered our secrets to the moon.
+                    </p>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="candlelit-scroll-indicator">
+                    <div>Scroll to feel the magic ✨</div>
+                    <div>↓</div>
+                </div>
+            </div>
+            
+            <!-- Audio Button -->
+            <button class="candlelit-audio-button" id="candlelit-audio-button" aria-label="Toggle ambient sounds">
+                🔇
+            </button>
+            
+            <!-- Background Audio -->
+            <audio id="candlelit-ambient-audio" loop preload="none">
+                <source src="https://www.soundjay.com/misc/sounds/ocean-waves.wav" type="audio/wav">
+            </audio>
+        </section>
+
     </div>
 
     <!-- Combined JavaScript -->
@@ -842,5 +1984,149 @@
     <script src="coffee-section.js"></script>
     <script src="ocean-section.js"></script>
     <script src="combined-memory-lane.js"></script>
+    
+    <!-- Candlelit Dinner Section JavaScript -->
+    <script>
+        // Candlelit Dinner Section Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Initialize candlelit dinner animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Candlelit dinner entrance animations
+            ScrollTrigger.create({
+                trigger: '.candlelit-dinner-section',
+                start: 'top 80%',
+                end: 'top 20%',
+                animation: gsap.timeline()
+                    .to('.candlelit-opening-text', { opacity: 1, y: 0, duration: 1.5, ease: 'power2.out' })
+                    .to('.candlelit-photo-container', { opacity: 1, scale: 1, duration: 1.2, ease: 'back.out(1.7)' }, '-=0.8')
+                    .to('.candlelit-story-section', { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '-=0.6')
+            });
+
+            // Scroll-triggered animations for candlelit section
+            ScrollTrigger.create({
+                trigger: '.candlelit-photo-container',
+                start: 'top 70%',
+                end: 'bottom 30%',
+                scrub: true,
+                animation: gsap.to('.candlelit-photo-frame', { 
+                    rotateY: 5, 
+                    rotateX: 2, 
+                    duration: 2 
+                })
+            });
+
+            // Candlelit moon rise animation
+            ScrollTrigger.create({
+                trigger: '.candlelit-dinner-section',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1,
+                animation: gsap.to('.candlelit-moon', { 
+                    y: -50, 
+                    duration: 3 
+                })
+            });
+
+            // Gentle breeze effect on candlelit text
+            gsap.to('.candlelit-opening-title', {
+                x: 3,
+                duration: 4,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1
+            });
+
+            gsap.to('.candlelit-story-highlight', {
+                x: -2,
+                duration: 5,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1,
+                delay: 1
+            });
+
+            // Enhanced candlelit flame flicker
+            gsap.to('.candlelit-flame', {
+                scaleY: 0.8,
+                scaleX: 1.1,
+                duration: 0.1,
+                ease: 'power2.inOut',
+                yoyo: true,
+                repeat: -1,
+                repeatDelay: Math.random() * 0.3
+            });
+
+            // Parallax effect for candlelit waves
+            ScrollTrigger.create({
+                trigger: '.candlelit-dinner-section',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+                animation: gsap.to('.candlelit-waves', { 
+                    x: -100, 
+                    duration: 3 
+                })
+            });
+
+            // Candlelit audio control
+            const candlelitAudioButton = document.getElementById('candlelit-audio-button');
+            const candlelitAmbientAudio = document.getElementById('candlelit-ambient-audio');
+            let candlelitIsPlaying = false;
+
+            if (candlelitAudioButton && candlelitAmbientAudio) {
+                candlelitAudioButton.addEventListener('click', function() {
+                    if (candlelitIsPlaying) {
+                        candlelitAmbientAudio.pause();
+                        candlelitAudioButton.textContent = '🔇';
+                        candlelitIsPlaying = false;
+                    } else {
+                        candlelitAmbientAudio.play().catch(e => console.log('Candlelit audio play failed:', e));
+                        candlelitAudioButton.textContent = '🔊';
+                        candlelitIsPlaying = true;
+                    }
+                });
+            }
+
+            // Update navigation for 4 memories
+            const memoryNavDots = document.querySelectorAll('.nav-dot');
+            const memorySections = document.querySelectorAll('.memory-section');
+
+            // Update scroll-triggered navigation
+            memorySections.forEach((section, index) => {
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top 50%',
+                    end: 'bottom 50%',
+                    onEnter: () => updateActiveMemory(index + 1),
+                    onEnterBack: () => updateActiveMemory(index + 1)
+                });
+            });
+
+            function updateActiveMemory(memoryNumber) {
+                // Update counter
+                const currentMemorySpan = document.getElementById('current-memory');
+                if (currentMemorySpan) {
+                    currentMemorySpan.textContent = memoryNumber;
+                }
+
+                // Update navigation dots
+                memoryNavDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === memoryNumber - 1);
+                });
+            }
+
+            // Navigation dot click handlers
+            memoryNavDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    const targetSection = memorySections[index];
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 
