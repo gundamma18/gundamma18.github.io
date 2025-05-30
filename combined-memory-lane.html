@@ -62,80 +62,6 @@
             position: relative;
         }
         
-        /* Transition Section Styles */
-        .transition-section {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, #FFD700 0%, #FF8C00 50%, #8B4513 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            z-index: 60;
-        }
-        
-        .transition-cups-container {
-            position: relative;
-            width: 300px;
-            height: 200px;
-        }
-        
-        .transition-cup {
-            position: absolute;
-            width: 80px;
-            height: 100px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .transition-cup-left {
-            left: 0;
-            transform: translateY(-50%) translateX(-120px);
-        }
-        
-        .transition-cup-right {
-            right: 0;
-            transform: translateY(-50%) translateX(120px);
-        }
-        
-        .transition-hearts {
-            position: absolute;
-            top: 30%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-        }
-        
-        .transition-heart {
-            position: absolute;
-            font-size: 24px;
-            animation: heartFloat 2s ease-out infinite;
-        }
-        
-        .transition-heart:nth-child(1) { animation-delay: 0s; left: -20px; }
-        .transition-heart:nth-child(2) { animation-delay: 0.3s; left: 0px; }
-        .transition-heart:nth-child(3) { animation-delay: 0.6s; left: 20px; }
-        
-        @keyframes heartFloat {
-            0% { transform: translateY(0) scale(0.5); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-60px) scale(1.2); opacity: 0; }
-        }
-        
-        .transition-text {
-            position: absolute;
-            bottom: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            color: white;
-            font-family: 'Dancing Script', cursive;
-            font-size: 24px;
-            opacity: 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-        
         /* Memory counter */
         .memory-counter {
             position: fixed;
@@ -219,14 +145,6 @@
             .nav-dot {
                 width: 10px;
                 height: 10px;
-            }
-            
-            .transition-text {
-                font-size: 20px;
-            }
-            
-            .transition-cups-container {
-                width: 250px;
             }
         }
 
@@ -3018,87 +2936,6 @@
             </div>
         </section>
 
-        <!-- Transition Section -->
-        <section class="transition-section" id="memory-transition">
-            <div class="transition-cups-container">
-                <!-- Left Coffee Cup -->
-                <div class="transition-cup transition-cup-left" id="transition-cup-left">
-                    <svg class="mug-svg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="transitionMugGradient1" cx="50%" cy="30%">
-                                <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
-                            </radialGradient>
-                        </defs>
-                        
-                        <!-- Mug Body -->
-                        <rect x="30" y="40" width="60" height="80" rx="8" ry="8" 
-                              fill="url(#transitionMugGradient1)" 
-                              class="mug-body"/>
-                        
-                        <!-- Mug Handle -->
-                        <path d="M 90 60 Q 105 65 105 80 Q 105 95 90 100" 
-                              stroke="url(#transitionMugGradient1)" 
-                              stroke-width="8" 
-                              fill="none" 
-                              stroke-linecap="round"/>
-                        
-                        <!-- Coffee Surface -->
-                        <ellipse cx="60" cy="45" rx="25" ry="5" fill="#3E2723"/>
-                        
-                        <!-- Mug Rim -->
-                        <ellipse cx="60" cy="40" rx="30" ry="6" fill="none" stroke="#654321" stroke-width="2"/>
-                    </svg>
-                </div>
-
-                <!-- Right Coffee Cup -->
-                <div class="transition-cup transition-cup-right" id="transition-cup-right">
-                    <svg class="mug-svg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="transitionMugGradient2" cx="50%" cy="30%">
-                                <stop offset="0%" style="stop-color:#D2B48C;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#A0522D;stop-opacity:1" />
-                            </radialGradient>
-                        </defs>
-                        
-                        <!-- Mug Body -->
-                        <rect x="30" y="40" width="60" height="80" rx="8" ry="8" 
-                              fill="url(#transitionMugGradient2)" 
-                              class="mug-body"/>
-                        
-                        <!-- Mug Handle -->
-                        <path d="M 30 60 Q 15 65 15 80 Q 15 95 30 100" 
-                              stroke="url(#transitionMugGradient2)" 
-                              stroke-width="8" 
-                              fill="none" 
-                              stroke-linecap="round"/>
-                        
-                        <!-- Coffee Surface -->
-                        <ellipse cx="60" cy="45" rx="25" ry="5" fill="#3E2723"/>
-                        
-                        <!-- Mug Rim -->
-                        <ellipse cx="60" cy="40" rx="30" ry="6" fill="none" stroke="#A0522D" stroke-width="2"/>
-                        
-                        <!-- Heart Design on Mug -->
-                        <path d="M 45 70 Q 45 65 50 65 Q 55 65 55 70 Q 55 75 50 80 Q 45 75 45 70" 
-                              fill="#FF69B4" opacity="0.7"/>
-                    </svg>
-                </div>
-
-                <!-- Hearts that appear when cups meet -->
-                <div class="transition-hearts" id="transition-hearts">
-                    <div class="transition-heart">💕</div>
-                    <div class="transition-heart">💖</div>
-                    <div class="transition-heart">💛</div>
-                </div>
-            </div>
-
-            <!-- Transition Text -->
-            <div class="transition-text" id="transition-text">
-                From messages to memories... ☕💕
-            </div>
-        </section>
-
         <!-- Memory 2: Coffee Section -->
         <section class="memory-section coffee-section" id="coffee-meeting" data-memory="2">
             <!-- Background Elements -->
@@ -3651,8 +3488,8 @@ That day, you became something so special to me 🫂
                 <div class="hands-romantic-text">
                     <p class="hands-story-text">
                         My favorite photooo...our hands making a heart.
-We promised that day... no matter what happens, we’d never leave each other.
-Even if we fight, we’d talk, understand, and figure it out.
+We promised that day... no matter what happens, we'd never leave each other.
+Even if we fight, we'd talk, understand, and figure it out.
 
 Your hands felt so soft, so small, but somehow fit perfectly in mine.
 That moment felt real.
