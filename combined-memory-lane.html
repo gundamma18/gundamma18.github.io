@@ -20,6 +20,25 @@
     <link rel="stylesheet" href="ocean-section.css">
     
     <style>
+        /* Global text overflow fixes */
+        * {
+            box-sizing: border-box;
+        }
+        
+        .story-text, .overlay-story-text, .candlelit-story-text, .ocean-story-text {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            white-space: normal;
+        }
+        
+        /* Ensure all containers can expand to fit content */
+        .text-content, .coffee-text-content, .candlelit-story-section, .ocean-content {
+            width: 100%;
+            overflow: visible;
+            min-height: auto;
+        }
+        
         /* Global styles for smooth scrolling */
         html {
             scroll-behavior: smooth;
@@ -925,7 +944,7 @@
         .candlelit-photo-container {
             position: relative;
             width: 100%;
-            max-width: 350px;
+            max-width: 500px;
             margin: 40px 0;
             perspective: 1000px;
             opacity: 0;
@@ -945,17 +964,10 @@
         .candlelit-dinner-photo {
             width: 100%;
             height: auto;
-            aspect-ratio: 4/3;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
-            background: linear-gradient(45deg, #2c3e50, #34495e);
-            color: #ecf0f1;
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            text-align: center;
-            line-height: 1.5;
-            padding: 40px 20px;
             border-radius: 15px;
+            max-height: 400px;
         }
 
         /* Candles */
@@ -1626,12 +1638,1170 @@
                 height: 70px;
             }
         }
+
+        /* Starry Dreams Section Styles */
+        .starry-dreams-section {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(180deg, #1a1438 0%, #2d1b69 30%, #161032 60%, #0f0a1a 100%);
+            color: #f4e6d7;
+            overflow: hidden;
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /* Background layers */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-layer-1 {
+            background: radial-gradient(ellipse at top, rgba(45, 27, 105, 0.3) 0%, transparent 70%);
+        }
+
+        .bg-layer-2 {
+            background: radial-gradient(ellipse at bottom, rgba(22, 16, 50, 0.5) 0%, transparent 70%);
+        }
+
+        /* Stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        .star.small {
+            width: 2px;
+            height: 2px;
+        }
+
+        .star.medium {
+            width: 3px;
+            height: 3px;
+        }
+
+        .star.large {
+            width: 4px;
+            height: 4px;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Moon */
+        .dreams-moon {
+            position: fixed;
+            top: 8%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #fff2e6, #f0e68c);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(240, 230, 140, 0.6);
+            z-index: 2;
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .dreams-moon {
+                width: 60px;
+                height: 60px;
+                top: 5%;
+                right: 5%;
+            }
+        }
+
+        /* Main container */
+        .starry-dreams-container {
+            position: relative;
+            z-index: 3;
+            padding: 0 20px;
+            max-width: 100%;
+        }
+
+        /* Hero section */
+        .starry-hero-section {
+            height: 25vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .starry-hero-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            background: linear-gradient(45deg, #f4e6d7, #ffd6cc, #f4e6d7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .starry-hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0;
+            color: #d4b5a0;
+        }
+
+        @media (max-width: 768px) {
+            .starry-hero-section {
+                height: 20vh;
+                margin-bottom: 0.5rem;
+            }
+            .starry-hero-title {
+                font-size: 2rem;
+            }
+            .starry-hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Dreams illustration section */
+        .starry-dreams-image-section {
+            min-height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .starry-dreams-image {
+            max-width: 90%;
+            max-height: 45vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(100px);
+            filter: drop-shadow(0 0 20px rgba(244, 230, 215, 0.3));
+        }
+
+        @media (max-width: 768px) {
+            .starry-dreams-image-section {
+                min-height: 25vh;
+                margin-bottom: 0.5rem;
+            }
+            .starry-dreams-image {
+                max-width: 95%;
+                max-height: 35vh;
+            }
+        }
+
+        /* Thought bubbles container */
+        .starry-bubbles-container {
+            position: relative;
+            min-height: 40vh;
+            width: 100%;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .starry-thought-bubble {
+            position: relative;
+            background: rgba(244, 230, 215, 0.15);
+            border: 2px solid rgba(244, 230, 215, 0.4);
+            border-radius: 25px;
+            padding: 25px 30px;
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            transform: translateY(50px);
+            width: calc(50% - 1rem);
+            max-width: 400px;
+            min-height: 200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .starry-bubble-1 {
+            order: 1;
+        }
+
+        .starry-bubble-2 {
+            order: 2;
+        }
+
+        .starry-bubble-3 {
+            order: 3;
+        }
+
+        .starry-bubble-4 {
+            order: 4;
+        }
+
+        .starry-bubble-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .starry-bubble-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #f4e6d7;
+            font-weight: 400;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            white-space: normal;
+            overflow: hidden;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            text-overflow: ellipsis;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .starry-bubbles-container {
+                min-height: 30vh;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .starry-thought-bubble {
+                width: 100%;
+                max-width: 350px;
+                padding: 20px 25px;
+                margin-bottom: 1rem;
+                min-height: 180px;
+            }
+            
+            .starry-bubble-text {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            
+            .starry-bubble-icon {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+            
+            .starry-final-section {
+                height: auto;
+                min-height: 10vh;
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+                padding: 1.5rem 0;
+            }
+            
+            .starry-final-message {
+                font-size: 1.5rem;
+                padding: 0 20px;
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .starry-bubbles-container {
+                min-height: 25vh;
+                padding: 0.5rem;
+                gap: 1rem;
+            }
+            
+            .starry-thought-bubble {
+                max-width: 320px;
+                padding: 18px 22px;
+                min-height: 160px;
+            }
+            
+            .starry-bubble-text {
+                font-size: 0.85rem;
+                line-height: 1.3;
+            }
+            
+            .starry-bubble-icon {
+                font-size: 1.6rem;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Audio button */
+        .starry-audio-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(244, 230, 215, 0.3);
+            background: rgba(244, 230, 215, 0.1);
+            color: #f4e6d7;
+            font-size: 1.2rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .starry-audio-button:hover {
+            background: rgba(244, 230, 215, 0.2);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .starry-bubbles-container {
+                height: 25vh;
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+            }
+            
+            .starry-final-section {
+                height: 12vh;
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+                padding: 1rem 0;
+            }
+            
+            .starry-final-message {
+                font-size: 1.4rem;
+                padding: 0 20px;
+            }
+        }
+
+        /* Final message */
+        .starry-final-section {
+            min-height: 15vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 2rem 1rem;
+            width: 100%;
+        }
+
+        .starry-final-message {
+            font-size: 1.8rem;
+            font-weight: 400;
+            opacity: 0;
+            background: linear-gradient(45deg, #f4e6d7, #ffd6cc, #f4e6d7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s infinite ease-in-out;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 90%;
+            line-height: 1.4;
+        }
+        
+        /* Finale Memory Section Styles */
+        .starry-memory-finale {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem 1.5rem;
+            width: 100%;
+        }
+
+        .finale-image-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .finale-image-glow {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: radial-gradient(circle, rgba(244, 230, 215, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: finaleGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes finaleGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .finale-memory-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid rgba(244, 230, 215, 0.3);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(244, 230, 215, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .finale-memory-image:hover {
+            transform: scale(1.05);
+        }
+
+        .finale-image-overlay {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: #f4e6d7;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 300;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .finale-image-container:hover .finale-image-overlay {
+            opacity: 1;
+        }
+
+        .finale-overlay-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 16px;
+        }
+
+        .finale-text-section {
+            max-width: 600px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .finale-story-text {
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(244, 230, 215, 0.9);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .finale-signature {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: rgba(244, 230, 215, 0.8);
+            text-align: center;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .finale-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            color: #ffd6cc;
+            font-weight: 600;
+            text-shadow: 0 2px 8px rgba(255, 214, 204, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .starry-memory-finale {
+                min-height: 70vh;
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .finale-image-container {
+                width: 280px;
+                height: 280px;
+                margin-bottom: 2rem;
+            }
+            
+            .finale-story-text {
+                font-size: 1rem;
+                margin-bottom: 1.2rem;
+            }
+            
+            .finale-signature {
+                margin-top: 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .finale-name {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .finale-image-container {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .finale-story-text {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+        }
+
+        /* Text Content */
+        .text-content {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto 0;
+            padding: 30px;
+            background: transparent;
+            border-radius: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            z-index: 20;
+            margin-top: -50px; /* Position from bottom of image */
+        }
+
+        .story-text {
+            font-family: 'Arial', sans-serif; /* Normal font */
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #f0f0f0;
+            margin-bottom: 20px;
+            text-align: justify;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            white-space: normal;
+        }
+
+        .subtitle {
+            font-family: 'Arial', sans-serif; /* Normal font */
+            font-size: 18px;
+            font-weight: 500;
+            color: #FFD700;
+            text-align: center;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Story Text Overlay */
+        .story-text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: #ffffff;
+            padding: 40px 30px 30px;
+            border-radius: 0 0 15px 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            z-index: 15;
+        }
+
+        .overlay-story-text {
+            font-family: 'Arial', sans-serif; /* Normal font */
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            margin: 0 0 15px 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            white-space: normal;
+        }
+
+        .overlay-subtitle {
+            font-family: 'Arial', sans-serif; /* Normal font */
+            font-size: 16px;
+            font-weight: 500;
+            color: #FFD700;
+            text-align: center;
+            margin: 0;
+            text-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Holding Hands Forever Section Styles */
+        .holding-hands-section {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(180deg, 
+                #0a0a0f 0%, 
+                #1a0d1f 25%, 
+                #2d1b3d 50%, 
+                #3d2654 75%, 
+                #1a0d1f 100%);
+            color: #f0e6f0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Starry Sky Background */
+        .hands-starry-sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hands-star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: handsStarTwinkle 3s ease-in-out infinite;
+        }
+
+        /* Individual star positioning */
+        .hands-star:nth-child(1) { top: 8%; left: 12%; width: 2px; height: 2px; animation-delay: 0s; box-shadow: 0 0 6px rgba(255,255,255,0.8); }
+        .hands-star:nth-child(2) { top: 15%; left: 85%; width: 1px; height: 1px; animation-delay: 1s; }
+        .hands-star:nth-child(3) { top: 25%; left: 65%; width: 3px; height: 3px; animation-delay: 2s; box-shadow: 0 0 8px rgba(255,255,255,0.6); }
+        .hands-star:nth-child(4) { top: 12%; left: 25%; width: 1px; height: 1px; animation-delay: 0.5s; }
+        .hands-star:nth-child(5) { top: 35%; left: 90%; width: 2px; height: 2px; animation-delay: 1.5s; box-shadow: 0 0 4px rgba(255,255,255,0.7); }
+        .hands-star:nth-child(6) { top: 18%; left: 45%; width: 1px; height: 1px; animation-delay: 2.5s; }
+        .hands-star:nth-child(7) { top: 40%; left: 20%; width: 2px; height: 2px; animation-delay: 3s; }
+        .hands-star:nth-child(8) { top: 5%; left: 70%; width: 1px; height: 1px; animation-delay: 3.5s; }
+        .hands-star:nth-child(9) { top: 30%; left: 50%; width: 2px; height: 2px; animation-delay: 4s; box-shadow: 0 0 5px rgba(255,255,255,0.5); }
+        .hands-star:nth-child(10) { top: 45%; left: 75%; width: 1px; height: 1px; animation-delay: 4.5s; }
+
+        @keyframes handsStarTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Cloud silhouettes for dreamy depth */
+        .hands-clouds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .hands-cloud {
+            position: absolute;
+            background: rgba(30, 20, 40, 0.3);
+            border-radius: 50px;
+            opacity: 0.6;
+            animation: handsCloudDrift 20s linear infinite;
+        }
+
+        .hands-cloud:nth-child(1) {
+            top: 10%;
+            left: -10%;
+            width: 120px;
+            height: 40px;
+            animation-duration: 25s;
+        }
+
+        .hands-cloud:nth-child(2) {
+            top: 30%;
+            left: -15%;
+            width: 80px;
+            height: 30px;
+            animation-duration: 30s;
+            animation-delay: -10s;
+        }
+
+        .hands-cloud:nth-child(3) {
+            top: 60%;
+            left: -8%;
+            width: 100px;
+            height: 35px;
+            animation-duration: 22s;
+            animation-delay: -15s;
+        }
+
+        @keyframes handsCloudDrift {
+            0% { transform: translateX(-20px); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateX(120vw); opacity: 0; }
+        }
+
+        /* Floating Hearts Container */
+        .floating-hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 16px;
+            opacity: 0;
+            animation: heartFloat 12s linear infinite;
+        }
+
+        /* Different heart types and positions */
+        .floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 10s; font-size: 14px; }
+        .floating-heart:nth-child(2) { left: 25%; animation-delay: 2s; animation-duration: 12s; font-size: 18px; }
+        .floating-heart:nth-child(3) { left: 40%; animation-delay: 4s; animation-duration: 11s; font-size: 16px; }
+        .floating-heart:nth-child(4) { left: 60%; animation-delay: 6s; animation-duration: 13s; font-size: 15px; }
+        .floating-heart:nth-child(5) { left: 75%; animation-delay: 8s; animation-duration: 10s; font-size: 17px; }
+        .floating-heart:nth-child(6) { left: 90%; animation-delay: 10s; animation-duration: 14s; font-size: 14px; }
+        .floating-heart:nth-child(7) { left: 15%; animation-delay: 1s; animation-duration: 11s; font-size: 16px; }
+        .floating-heart:nth-child(8) { left: 35%; animation-delay: 3s; animation-duration: 12s; font-size: 15px; }
+        .floating-heart:nth-child(9) { left: 55%; animation-delay: 5s; animation-duration: 13s; font-size: 18px; }
+        .floating-heart:nth-child(10) { left: 80%; animation-delay: 7s; animation-duration: 10s; font-size: 14px; }
+
+        @keyframes heartFloat {
+            0% { 
+                transform: translateY(100vh) scale(0.5) rotate(0deg); 
+                opacity: 0; 
+            }
+            5% { 
+                opacity: 0.8; 
+            }
+            50% { 
+                opacity: 1; 
+                transform: translateY(50vh) scale(1) rotate(180deg); 
+            }
+            95% { 
+                opacity: 0.8; 
+            }
+            100% { 
+                transform: translateY(-100px) scale(1.2) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* Main Content Container */
+        .hands-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        /* Opening Text */
+        .hands-opening-text {
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hands-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #f5c2c7;
+            margin-bottom: 15px;
+            text-shadow: 0 3px 12px rgba(245, 194, 199, 0.4);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hands-subtitle {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #e8d5db;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Image Container */
+        .hands-image-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin: 30px 0;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* Soft spotlight glow behind image */
+        .hands-spotlight {
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            right: -40px;
+            bottom: -40px;
+            background: radial-gradient(circle, 
+                rgba(245, 194, 199, 0.4) 0%, 
+                rgba(232, 213, 219, 0.2) 30%, 
+                transparent 70%);
+            border-radius: 50%;
+            animation: handsSpotlightPulse 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes handsSpotlightPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* Image Frame */
+        .hands-image-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 0 30px rgba(245, 194, 199, 0.3),
+                0 0 60px rgba(232, 213, 219, 0.2),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(245, 194, 199, 0.4);
+        }
+
+        .hands-memory-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            filter: brightness(1.1) contrast(1.05) saturate(1.1);
+        }
+
+        .hands-image-container:hover .hands-memory-image {
+            transform: scale(1.05);
+        }
+
+        /* Heartbeat animation for image shadow */
+        .hands-image-frame::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, rgba(245, 194, 199, 0.6) 0%, transparent 70%);
+            border-radius: 25px;
+            animation: handsHeartbeat 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes handsHeartbeat {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 0.6; 
+            }
+            50% { 
+                transform: scale(1.1); 
+                opacity: 1; 
+            }
+        }
+
+        /* Orbiting Hearts around Image */
+        .orbiting-hearts {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            margin: -200px 0 0 -200px;
+            pointer-events: none;
+            z-index: 15;
+        }
+
+        .orbiting-heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.8;
+            animation: handsOrbit 15s linear infinite;
+        }
+
+        .orbiting-heart:nth-child(1) { 
+            top: 0; 
+            left: 50%; 
+            animation-delay: 0s; 
+            color: #f5c2c7;
+        }
+        .orbiting-heart:nth-child(2) { 
+            top: 50%; 
+            right: 0; 
+            animation-delay: -3.75s; 
+            color: #e8d5db;
+        }
+        .orbiting-heart:nth-child(3) { 
+            bottom: 0; 
+            left: 50%; 
+            animation-delay: -7.5s; 
+            color: #f5c2c7;
+        }
+        .orbiting-heart:nth-child(4) { 
+            top: 50%; 
+            left: 0; 
+            animation-delay: -11.25s; 
+            color: #e8d5db;
+        }
+
+        @keyframes handsOrbit {
+            0% { 
+                transform: rotate(0deg) translateX(180px) rotate(0deg); 
+                opacity: 0.4; 
+            }
+            25% { 
+                opacity: 1; 
+            }
+            75% { 
+                opacity: 1; 
+            }
+            100% { 
+                transform: rotate(360deg) translateX(180px) rotate(-360deg); 
+                opacity: 0.4; 
+            }
+        }
+
+        /* Romantic Text that fades in */
+        .hands-romantic-text {
+            margin: 40px 0;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hands-story-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.7;
+            color: rgba(240, 230, 240, 0.9);
+            text-align: center;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hands-quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #f5c2c7;
+            text-align: center;
+            margin: 20px 0;
+            font-style: italic;
+            text-shadow: 0 2px 8px rgba(245, 194, 199, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Heart Gathering Animation */
+        .heart-gathering {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 350px;
+            height: 350px;
+            margin: -175px 0 0 -175px;
+            pointer-events: none;
+            z-index: 20;
+            opacity: 0;
+        }
+
+        .gathering-heart {
+            position: absolute;
+            font-size: 18px;
+            color: #f5c2c7;
+            animation: gatherAroundImage 3s ease-out forwards;
+        }
+
+        .gathering-heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .gathering-heart:nth-child(2) { top: 10%; right: 10%; animation-delay: 0.2s; }
+        .gathering-heart:nth-child(3) { top: 50%; left: 5%; animation-delay: 0.4s; }
+        .gathering-heart:nth-child(4) { top: 50%; right: 5%; animation-delay: 0.6s; }
+        .gathering-heart:nth-child(5) { bottom: 10%; left: 10%; animation-delay: 0.8s; }
+        .gathering-heart:nth-child(6) { bottom: 10%; right: 10%; animation-delay: 1s; }
+        .gathering-heart:nth-child(7) { top: 30%; left: 15%; animation-delay: 1.2s; }
+        .gathering-heart:nth-child(8) { top: 30%; right: 15%; animation-delay: 1.4s; }
+
+        @keyframes gatherAroundImage {
+            0% { 
+                transform: scale(0) rotate(0deg); 
+                opacity: 0; 
+            }
+            50% { 
+                opacity: 1; 
+            }
+            100% { 
+                transform: scale(1.2) rotate(360deg); 
+                opacity: 0.8; 
+            }
+        }
+
+        /* Audio Button */
+        .hands-audio-button {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(245, 194, 199, 0.1);
+            border: 2px solid rgba(245, 194, 199, 0.3);
+            border-radius: 50%;
+            color: #f5c2c7;
+            font-size: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hands-audio-button:hover {
+            background: rgba(245, 194, 199, 0.2);
+            border-color: rgba(245, 194, 199, 0.5);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .hands-content {
+                padding: 30px 15px;
+                max-width: 350px;
+            }
+
+            .hands-title {
+                font-size: 2.2rem;
+            }
+
+            .hands-subtitle {
+                font-size: 1rem;
+            }
+
+            .hands-image-container {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hands-story-text {
+                font-size: 0.95rem;
+            }
+
+            .hands-quote {
+                font-size: 1.1rem;
+            }
+
+            .orbiting-hearts {
+                width: 320px;
+                height: 320px;
+                margin: -160px 0 0 -160px;
+            }
+
+            .orbiting-heart {
+                font-size: 16px;
+            }
+
+            .hands-audio-button {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 18px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hands-content {
+                padding: 60px 40px;
+                max-width: 500px;
+            }
+
+            .hands-title {
+                font-size: 3.2rem;
+            }
+
+            .hands-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hands-image-container {
+                width: 380px;
+                height: 380px;
+            }
+
+            .hands-story-text {
+                font-size: 1.1rem;
+            }
+
+            .hands-quote {
+                font-size: 1.4rem;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Memory Counter -->
     <div class="memory-counter" id="memory-counter">
-        Memory <span id="current-memory">1</span> of <span id="total-memories">5</span>
+        Memory <span id="current-memory">1</span> of <span id="total-memories">6</span>
     </div>
     
     <!-- Navigation Dots -->
@@ -1640,7 +2810,8 @@
         <div class="nav-dot" data-tooltip="First Coffee Together" data-section="1"></div>
         <div class="nav-dot" data-tooltip="Ocean Night Memory" data-section="2"></div>
         <div class="nav-dot" data-tooltip="Candlelit Beachside Dinner" data-section="3"></div>
-        <div class="nav-dot" data-tooltip="Starry Night Together" data-section="4"></div>
+        <div class="nav-dot" data-tooltip="Holding Hands Forever" data-section="4"></div>
+        <div class="nav-dot" data-tooltip="Starry Dreams Together" data-section="5"></div>
     </div>
     
     <!-- Memory Wrapper -->
@@ -1988,16 +3159,24 @@
                          id="coffee-memory-image" />
                     <div class="image-overlay">
                         <div class="image-title">Our First Coffee Date ☕</div>
-                        <div class="image-subtitle">Nervous smiles and warm hearts</div>
                     </div>
                     
                     <!-- Coffee Story Overlay -->
                     <div class="coffee-story-overlay" id="coffee-story-overlay">
                         <p class="overlay-story-text">
-                            That first coffee date... I was so nervous, but your smile made everything feel right. We talked for hours, laughing over silly jokes and sharing our dreams. The way you stirred your coffee, the sparkle in your eyes when you laughed... I knew right then that this was just the beginning of something beautiful. ☕💕
+                            Our first coffee date..
+We spoke about our lives, our families, childhood stuff,
+and it was so crazy how many things matched.
+Even our families felt so similar....it made me feel like
+maybe this isnt just a coincidence.
+
+You showed me your funny videos,
+and I showed mine (even the embarrassing ones 😛)
+
+Just that moment, that coffee, and you in front of me smiling.
+That was enough.
                         </p>
                         <div class="overlay-subtitle">
-                            The first of many coffee dates 💛
                         </div>
                     </div>
                 </div>
@@ -2117,18 +3296,22 @@
                 </div>
 
                 <!-- Coffee Shop Napkin with Message -->
-                <div class="napkin-container" id="napkin">
-                    <div class="napkin">
-                        <div class="napkin-text">First coffee ☕</div>
-                        <div class="napkin-subtext">but not the last 💕</div>
-                    </div>
-                </div>
             </div>
 
             <!-- Coffee Text Content (NEW - similar to Bumble section) -->
             <div class="coffee-text-content" id="coffee-text-content">
                 <p class="story-text">
-                    That first coffee date... I was so nervous, but your smile made everything feel right. We talked for hours, laughing over silly jokes and sharing our dreams. The way you stirred your coffee, the sparkle in your eyes when you laughed... I knew right then that this was just the beginning of something beautiful. ☕💕
+                    Our first coffee date..
+We spoke about our lives, our families, childhood stuff,
+and it was so crazy how many things matched.
+Even our families felt so similar....it made me feel like
+maybe this isnt just a coincidence.
+
+You showed me your funny videos,
+and I showed mine (even the embarrassing ones 😛)
+
+Just that moment, that coffee, and you in front of me smiling.
+That was enough.
                 </p>
                 <div class="subtitle">
                     The first of many coffee dates 💛
@@ -2136,15 +3319,6 @@
             </div>
 
             <!-- Story Text -->
-            <div class="story-container coffee-story" id="story-container">
-                <div class="story-text" id="story-text">
-                    That awkward laugh, the warm cup, the stolen glance...<br>
-                    Our first coffee — simple, yet unforgettable.
-                </div>
-                <div class="story-subtitle">
-                    The beginning of our daily ritual 💛
-                </div>
-            </div>
 
             <!-- Audio Control -->
             <button class="audio-button" id="audio-button" aria-label="Toggle café ambience">
@@ -2163,7 +3337,6 @@
 
             <!-- Scroll Indicator -->
             <div class="scroll-indicator">
-                <div class="scroll-text">More memories coming soon ☕</div>
                 <div class="scroll-arrow">↓</div>
             </div>
         </section>
@@ -2217,7 +3390,7 @@
                 <!-- Memory Image Container -->
                 <div class="ocean-image-container">
                     <div class="ocean-image-glow"></div>
-                    <img src="assets/images/ocean-memory.jpg" 
+                    <img src="assets/images/image3.jpeg" 
                          alt="Ocean night memory" 
                          class="ocean-memory-image" />
                     
@@ -2231,14 +3404,15 @@
                 
                 <!-- Story Text Below Image -->
                 <p class="ocean-story-text">
-                    Under the starlit sky, by the endless ocean, we found our peaceful moment together. 
-                    The gentle waves whispered secrets of love, and the moonlight danced on the water 
-                    like our hearts dancing in rhythm.
+                    That moment you asked, "Can I call you my boyfriend?" 🥺
+My heart honestly skipped a beat.
+And I started singing this insideeee...
+"Im a high school lover, and you're my favorite flavour
+Love is all, all my soul
+Youre my playground love..." 🎶
+That day, you became something so special to me 🫂
+
                 </p>
-                
-                <div class="ocean-subtitle">
-                    Where hearts meet the horizon 🌊💙
-                </div>
             </div>
             
             <!-- Audio Control -->
@@ -2358,13 +3532,7 @@
                 <div class="candlelit-photo-container">
                     <div class="candlelit-photo-frame">
                         <!-- Replace this div with your actual image -->
-                        <div class="candlelit-dinner-photo">
-                            🕯️ Your Candlelit Memory Photo Goes Here 🕯️
-                            <br><br>
-                            Replace this placeholder with:
-                            <br>
-                            &lt;img src="your-dinner-photo.jpg" alt="Candlelit beachside dinner" class="candlelit-dinner-photo" /&gt;
-                        </div>
+                        <img src="assets/images/image4.png" alt="Candlelit beachside dinner" class="candlelit-dinner-photo" />
                         
                         <!-- Candles -->
                         <div class="candlelit-candles-container">
@@ -2383,15 +3551,14 @@
                 <!-- Story Section -->
                 <div class="candlelit-story-section">
                     <p class="candlelit-story-text">
-                        The candles flickered in the gentle breeze, casting dancing shadows on the sand. 
-                        <span class="candlelit-story-highlight">"Two hearts. One night. One little memory."</span>
-                        Time stood still as the waves whispered our secrets to the moon.
+                        Our first black-and-white dress date..we looked so good together. We sat close under the sky, just feeling like us. You wanted junk food (as always 🤭), and I tried to stop you... but deep down, I just wanted to get you your favorite cheesecake and see that cute smile.
+
+
                     </p>
                 </div>
                 
                 <!-- Scroll Indicator -->
                 <div class="candlelit-scroll-indicator">
-                    <div>Scroll to feel the magic ✨</div>
                     <div>↓</div>
                 </div>
             </div>
@@ -2407,84 +3574,165 @@
             </audio>
         </section>
 
-        <!-- Memory 5: Starry Night Together Section -->
-        <section class="memory-section starry-night-section" id="starry-night" data-memory="5">
+        <!-- Memory 5: Holding Hands Forever Section -->
+        <section class="memory-section holding-hands-section" id="holding-hands" data-memory="5">
             <!-- Starry Sky Background -->
-            <div class="starry-sky">
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
-                <div class="star"></div>
+            <div class="hands-starry-sky">
+                <div class="hands-star"></div>
+                <div class="hands-star"></div>
+                <div class="hands-star"></div>
+                <div class="hands-star"></div>
+                <div class="hands-star"></div>
+                <div class="hands-star"></div>
+                <div class="hands-star"></div>
+                <div class="hands-star"></div>
+                <div class="hands-star"></div>
+                <div class="hands-star"></div>
             </div>
             
-            <!-- Shooting Stars -->
-            <div class="shooting-stars">
-                <div class="shooting-star"></div>
-                <div class="shooting-star"></div>
-                <div class="shooting-star"></div>
+            <!-- Cloud silhouettes -->
+            <div class="hands-clouds">
+                <div class="hands-cloud"></div>
+                <div class="hands-cloud"></div>
+                <div class="hands-cloud"></div>
             </div>
             
-            <!-- Crescent Moon -->
-            <div class="starry-moon"></div>
-            
-            <!-- Floating Star Particles -->
-            <div class="floating-stars">
-                <div class="floating-star">✨</div>
-                <div class="floating-star">⭐</div>
-                <div class="floating-star">✨</div>
-                <div class="floating-star">⭐</div>
+            <!-- Floating Hearts Container -->
+            <div class="floating-hearts-container">
+                <div class="floating-heart">💕</div>
+                <div class="floating-heart">💖</div>
+                <div class="floating-heart">💗</div>
+                <div class="floating-heart">💝</div>
+                <div class="floating-heart">💕</div>
+                <div class="floating-heart">💖</div>
+                <div class="floating-heart">💗</div>
+                <div class="floating-heart">💝</div>
+                <div class="floating-heart">💕</div>
+                <div class="floating-heart">💖</div>
             </div>
             
-            <!-- Central Content -->
-            <div class="starry-content">
-                <!-- Memory Image Container -->
-                <div class="starry-image-container" id="starry-image-container">
-                    <div class="starry-image-glow"></div>
-                    <div class="starry-image-frame">
-                        <!-- Replace this placeholder with your actual image -->
-                        <!-- <img src="assets/images/starry-memory.jpg" alt="Starry night memory" class="starry-memory-image" /> -->
-                        <div class="starry-image-placeholder">
-                            ✨ Your Starry Night Memory ✨
-                            <br><br>
-                            Replace this with:
-                            <br>
-                            &lt;img src="your-starry-photo.jpg" alt="Starry night together" class="starry-memory-image" /&gt;
-                        </div>
-                        
-                        <!-- Text Overlay on Image -->
-                        <div class="starry-text-overlay" id="starry-text-overlay">
-                            <p class="starry-overlay-text">
-                                Beneath the same stars, our story began to shine.
-                            </p>
-                        </div>
+            <!-- Main content -->
+            <div class="hands-content">
+                <!-- Opening Text -->
+                <div class="hands-opening-text">
+                    <h1 class="hands-title">This Moment...</h1>
+                    <p class="hands-subtitle">When time slowed down and everything felt perfect</p>
+                </div>
+                
+                <!-- Image Container with spotlight -->
+                <div class="hands-image-container">
+                    <div class="hands-spotlight"></div>
+                    <div class="hands-image-frame">
+                        <img src="assets/images/image5.jpeg" alt="Holding hands under the stars" class="hands-memory-image" />
                     </div>
                     
-                    <!-- Interactive Hearts (triggered on tap) -->
-                    <div class="starry-hearts" id="starry-hearts">
-                        <div class="constellation-heart">💫</div>
-                        <div class="constellation-heart">⭐</div>
-                        <div class="constellation-heart">💫</div>
+                    <!-- Orbiting Hearts around Image -->
+                    <div class="orbiting-hearts">
+                        <div class="orbiting-heart">💕</div>
+                        <div class="orbiting-heart">💖</div>
+                        <div class="orbiting-heart">💗</div>
+                        <div class="orbiting-heart">💝</div>
+                    </div>
+                    
+                    <!-- Heart Gathering Animation -->
+                    <div class="heart-gathering">
+                        <div class="gathering-heart">💕</div>
+                        <div class="gathering-heart">💖</div>
+                        <div class="gathering-heart">💗</div>
+                        <div class="gathering-heart">💝</div>
+                        <div class="gathering-heart">💕</div>
+                        <div class="gathering-heart">💖</div>
+                        <div class="gathering-heart">💗</div>
+                        <div class="gathering-heart">💝</div>
                     </div>
                 </div>
                 
-                <!-- Story Text Below Image -->
-                <p class="starry-story-text" id="starry-story-text">
-                    Under this infinite canopy of stars, we made promises that only the universe could hear. 
-                    Each twinkle seemed to whisper our secrets, each constellation mapped out our future together.
-                </p>
+                <!-- Romantic Story Text -->
+                <div class="hands-romantic-text">
+                    <p class="hands-story-text">
+                        My favorite photooo...our hands making a heart.
+We promised that day... no matter what happens, we’d never leave each other.
+Even if we fight, we’d talk, understand, and figure it out.
+
+Your hands felt so soft, so small, but somehow fit perfectly in mine.
+That moment felt real.
+
+                    </p>
+                    
+                </div>
+            </div>
+            
+            <!-- Audio Button -->
+            <button class="hands-audio-button" id="hands-audio-button" aria-label="Toggle romantic ambience">
+                🔇
+            </button>
+            
+            <!-- Background Audio -->
+            <audio id="hands-ambient-audio" loop preload="none">
+                <source src="https://www.soundjay.com/misc/sounds/night-cricket.wav" type="audio/wav">
+            </audio>
+        </section>
+
+        <!-- Memory 6: Starry Dreams Together Section -->
+        <section class="memory-section starry-dreams-section" id="starry-dreams" data-memory="6">
+            <!-- Background layers -->
+            <div class="bg-layer bg-layer-1"></div>
+            <div class="bg-layer bg-layer-2"></div>
+            
+            <!-- Stars -->
+            <div class="stars" id="starry-dreams-stars"></div>
+            
+            <!-- Moon -->
+            <div class="dreams-moon"></div>
+            
+            <!-- Main content -->
+            <div class="starry-dreams-container">
+                <!-- Hero section -->
+                <div class="starry-hero-section">
+                    <h1 class="starry-hero-title">Starry Dreams</h1>
+                    <p class="starry-hero-subtitle">Where our little dreams dance under the night sky</p>
+                </div>
                 
-                <div class="starry-subtitle" id="starry-subtitle">
-                    Written in the stars ⭐💕
+                <!-- Dreams illustration -->
+                <div class="starry-dreams-image-section">
+                    <img src="assets/images/image6.png" alt="Our Dreams Together" class="starry-dreams-image">
+                </div>
+                
+                <!-- Thought bubbles -->
+                <div class="starry-bubbles-container">
+                    <div class="starry-thought-bubble starry-bubble-1">
+                        <p class="starry-bubble-text">❤️ to our little dreams... Jp Morgan with shades, South Korea for your skincare, and be that healthy couple..gym and books. They were small dreams, but they felt like everything..cz they had you in them.</p>
+                    </div>
+
+                </div>
+                
+                <!-- Final message -->
+                
+                <!-- New Memory Section -->
+                <div class="starry-memory-finale">
+                    <div class="finale-image-container">
+                        <div class="finale-image-glow"></div>
+                        <img src="assets/images/image7.jpeg" alt="Our Beautiful Journey" class="finale-memory-image">
+                        <div class="finale-image-overlay">
+                            <span class="finale-overlay-text">Every moment with you feels like magic ✨</span>
+                        </div>
+                    </div>
+                    
+                    <div class="finale-text-section">
+                        <p class="finale-story-text">
+                            I smile the biggest when I think about you.
+You inspire me to become a better version of myself every day.
+
+I would love to keep doing that... for the rest of my life.
+
+If you feel the same... I'd be the happiest person in the world.
+
+But if not, that's okay too.
+I'll still wish you every bit of joy and love this world has to offer.
+
+Take care, always. ❤️
+                        </p>
+                    </div>
                 </div>
             </div>
             
@@ -2834,6 +4082,564 @@
                 });
             });
         });
+
+        // Starry Dreams Section Animations and Interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Create stars for starry dreams section
+            function createStarryDreamsStars() {
+                const starsContainer = document.getElementById('starry-dreams-stars');
+                if (!starsContainer) return;
+                
+                const starCount = window.innerWidth < 768 ? 150 : 200;
+                
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.className = `star ${['small', 'medium', 'large'][Math.floor(Math.random() * 3)]}`;
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.animationDelay = Math.random() * 3 + 's';
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            // Initialize stars
+            createStarryDreamsStars();
+            
+            // Parallax effect for background layers
+            gsap.to('.bg-layer-1', {
+                y: '-50%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.starry-dreams-section',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+            
+            gsap.to('.bg-layer-2', {
+                y: '-30%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.starry-dreams-section',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+            
+            // Moon animation
+            gsap.to('.dreams-moon', {
+                opacity: 1,
+                scale: 1.1,
+                duration: 2,
+                delay: 1,
+                ease: 'power2.out'
+            });
+            
+            gsap.to('.dreams-moon', {
+                y: -50,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.starry-dreams-section',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+            
+            // Hero section animations
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.starry-hero-section',
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                }
+            })
+            .to('.starry-hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: 'power2.out'
+            })
+            .to('.starry-hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: 'power2.out'
+            }, '-=1');
+            
+            // Dreams image animation
+            gsap.to('.starry-dreams-image', {
+                opacity: 1,
+                y: 0,
+                duration: 2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.starry-dreams-image-section',
+                    start: 'top 60%',
+                    end: 'bottom 40%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+            
+            // Add floating animation to dreams image
+            gsap.to('.starry-dreams-image', {
+                y: '+=20',
+                duration: 3,
+                repeat: -1,
+                yoyo: true,
+                ease: 'power1.inOut',
+                delay: 2
+            });
+            
+            // Thought bubbles animations
+            document.querySelectorAll('.starry-thought-bubble').forEach((bubble, index) => {
+                gsap.to(bubble, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.5,
+                    ease: 'back.out(1.7)',
+                    scrollTrigger: {
+                        trigger: bubble,
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    delay: index * 0.3
+                });
+                
+                // Add subtle floating animation
+                gsap.to(bubble, {
+                    y: '+=15',
+                    duration: 2 + Math.random(),
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'power1.inOut',
+                    delay: index * 0.5 + 3
+                });
+            });
+            
+            // Final message animation
+            gsap.to('.starry-final-message', {
+                opacity: 1,
+                scale: 1,
+                duration: 2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.starry-final-section',
+                    start: 'top 60%',
+                    end: 'bottom 40%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+            
+            // Finale memory section animations
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.starry-memory-finale',
+                    start: 'top 70%',
+                    end: 'bottom 30%',
+                    toggleActions: 'play none none reverse'
+                }
+            })
+            .to('.finale-image-container', {
+                opacity: 1,
+                scale: 1,
+                duration: 2,
+                ease: 'back.out(1.7)'
+            })
+            .to('.finale-text-section', {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: 'power2.out'
+            }, '-=1');
+            
+            // Add gentle floating animation to finale image
+            gsap.to('.finale-image-container', {
+                y: '+=15',
+                duration: 4,
+                repeat: -1,
+                yoyo: true,
+                ease: 'power1.inOut',
+                delay: 2
+            });
+            
+            // Typewriter effect for finale signature
+            ScrollTrigger.create({
+                trigger: '.finale-signature',
+                start: 'top 80%',
+                onEnter: () => {
+                    const signature = document.querySelector('.finale-name');
+                    if (signature) {
+                        setTimeout(() => {
+                            gsap.fromTo(signature, 
+                                { opacity: 0 },
+                                { opacity: 1, duration: 2, ease: 'power2.out' }
+                            );
+                        }, 1000);
+                    }
+                }
+            });
+            
+            // Stars parallax movement
+            gsap.to('.stars', {
+                x: '-10%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.starry-dreams-section',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+            
+            // Add random twinkling intensity on scroll
+            ScrollTrigger.create({
+                trigger: '.starry-dreams-section',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+                onUpdate: self => {
+                    const progress = self.progress;
+                    document.querySelectorAll('#starry-dreams-stars .star').forEach(star => {
+                        const intensity = 0.3 + (progress * 0.7);
+                        star.style.setProperty('--twinkle-intensity', intensity);
+                    });
+                }
+            });
+
+            // Starry dreams audio control
+            const starryAudioButton = document.getElementById('starry-audio-button');
+            const starryAmbientAudio = document.getElementById('starry-ambient-audio');
+            let starryIsPlaying = false;
+
+            if (starryAudioButton && starryAmbientAudio) {
+                starryAudioButton.addEventListener('click', function() {
+                    if (starryIsPlaying) {
+                        starryAmbientAudio.pause();
+                        starryAudioButton.textContent = '🔇';
+                        starryIsPlaying = false;
+                    } else {
+                        starryAmbientAudio.play().catch(e => console.log('Starry audio play failed:', e));
+                        starryAudioButton.textContent = '🔊';
+                        starryIsPlaying = true;
+                    }
+                });
+            }
+
+            // Update navigation for 5 memories
+            const memoryNavDots = document.querySelectorAll('.nav-dot');
+            const memorySections = document.querySelectorAll('.memory-section');
+
+            // Update scroll-triggered navigation
+            memorySections.forEach((section, index) => {
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top 50%',
+                    end: 'bottom 50%',
+                    onEnter: () => updateActiveMemory(index + 1),
+                    onEnterBack: () => updateActiveMemory(index + 1)
+                });
+            });
+
+            function updateActiveMemory(memoryNumber) {
+                // Update counter
+                const currentMemorySpan = document.getElementById('current-memory');
+                if (currentMemorySpan) {
+                    currentMemorySpan.textContent = memoryNumber;
+                }
+
+                // Update navigation dots
+                memoryNavDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === memoryNumber - 1);
+                });
+            }
+
+            // Navigation dot click handlers
+            memoryNavDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    const targetSection = memorySections[index];
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Responsive adjustments
+            function handleResize() {
+                if (window.innerWidth < 768) {
+                    // Adjust animations for mobile
+                    ScrollTrigger.getAll().forEach(trigger => {
+                        if (trigger.vars && trigger.vars.start) {
+                            trigger.vars.start = trigger.vars.start.replace('80%', '90%');
+                        }
+                    });
+                }
+            }
+            
+            window.addEventListener('resize', handleResize);
+            handleResize();
+            
+            // Smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+        });
+
+        // Holding Hands Forever Section Animations and Interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Holding hands entrance animations
+            ScrollTrigger.create({
+                trigger: '.holding-hands-section',
+                start: 'top 80%',
+                end: 'top 20%',
+                animation: gsap.timeline()
+                    .to('.hands-title', { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 2, 
+                        ease: 'power2.out' 
+                    })
+                    .to('.hands-subtitle', { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 1.5, 
+                        ease: 'power2.out' 
+                    }, '-=1.5')
+                    .to('.hands-image-container', { 
+                        opacity: 1, 
+                        scale: 1, 
+                        duration: 2.5, 
+                        ease: 'back.out(1.7)' 
+                    }, '-=1')
+                    .to('.hands-romantic-text', { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 1.8, 
+                        ease: 'power2.out' 
+                    }, '-=1.2')
+                    .to('.hands-quote', { 
+                        opacity: 1, 
+                        y: 0, 
+                        duration: 1.5, 
+                        ease: 'power2.out' 
+                    }, '-=0.8')
+            });
+
+            // Floating hearts that rise from bottom on scroll
+            ScrollTrigger.create({
+                trigger: '.holding-hands-section',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1,
+                onUpdate: self => {
+                    const progress = self.progress;
+                    // Trigger floating hearts based on scroll progress
+                    document.querySelectorAll('.floating-heart').forEach((heart, index) => {
+                        const delay = index * 0.1;
+                        if (progress > delay) {
+                            heart.style.animationPlayState = 'running';
+                        }
+                    });
+                }
+            });
+
+            // Heart gathering animation triggered on scroll
+            ScrollTrigger.create({
+                trigger: '.hands-image-container',
+                start: 'center 60%',
+                end: 'center 40%',
+                onEnter: () => {
+                    const heartGathering = document.querySelector('.heart-gathering');
+                    if (heartGathering) {
+                        heartGathering.style.opacity = '1';
+                        // Restart gathering animation
+                        const gatheringHearts = heartGathering.querySelectorAll('.gathering-heart');
+                        gatheringHearts.forEach(heart => {
+                            heart.style.animation = 'none';
+                            heart.offsetHeight; // Trigger reflow
+                            heart.style.animation = 'gatherAroundImage 3s ease-out forwards';
+                        });
+                    }
+                },
+                onLeave: () => {
+                    const heartGathering = document.querySelector('.heart-gathering');
+                    if (heartGathering) {
+                        setTimeout(() => {
+                            heartGathering.style.opacity = '0';
+                        }, 3000);
+                    }
+                }
+            });
+
+            // Parallax effect for clouds
+            ScrollTrigger.create({
+                trigger: '.holding-hands-section',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true,
+                animation: gsap.to('.hands-clouds', { 
+                    x: 50, 
+                    duration: 3 
+                })
+            });
+
+            // Gentle floating animation for the image
+            gsap.to('.hands-image-container', {
+                y: 15,
+                duration: 4,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1
+            });
+
+            // Enhanced spotlight pulse
+            gsap.to('.hands-spotlight', {
+                scale: 1.05,
+                opacity: 0.8,
+                duration: 4,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1
+            });
+
+            // Interactive image tap for heart gathering
+            const handsImageContainer = document.querySelector('.hands-image-container');
+            const heartGathering = document.querySelector('.heart-gathering');
+            
+            if (handsImageContainer && heartGathering) {
+                handsImageContainer.addEventListener('click', function() {
+                    heartGathering.style.opacity = '1';
+                    
+                    // Reset and restart heart gathering animation
+                    const gatheringHearts = heartGathering.querySelectorAll('.gathering-heart');
+                    gatheringHearts.forEach(heart => {
+                        heart.style.animation = 'none';
+                        heart.offsetHeight; // Trigger reflow
+                        heart.style.animation = 'gatherAroundImage 3s ease-out forwards';
+                    });
+                    
+                    // Hide hearts after animation
+                    setTimeout(() => {
+                        heartGathering.style.opacity = '0';
+                    }, 3000);
+                });
+            }
+
+            // Enhanced star twinkling with random timing
+            const handsStars = document.querySelectorAll('.hands-star');
+            handsStars.forEach((star, index) => {
+                const delay = Math.random() * 3;
+                const duration = 2 + Math.random() * 2;
+                star.style.animationDelay = `${delay}s`;
+                star.style.animationDuration = `${duration}s`;
+            });
+
+            // Typewriter effect for romantic quote
+            ScrollTrigger.create({
+                trigger: '.hands-quote',
+                start: 'top 80%',
+                onEnter: () => {
+                    const quote = document.querySelector('.hands-quote');
+                    if (quote) {
+                        const originalText = quote.textContent;
+                        quote.textContent = '';
+                        quote.style.opacity = '1';
+                        
+                        let i = 0;
+                        const typeWriter = setInterval(() => {
+                            if (i < originalText.length) {
+                                quote.textContent += originalText.charAt(i);
+                                i++;
+                            } else {
+                                clearInterval(typeWriter);
+                            }
+                        }, 100);
+                    }
+                }
+            });
+
+            // Breathing effect for romantic text
+            gsap.to('.hands-story-text', {
+                scale: 1.02,
+                duration: 5,
+                ease: 'sine.inOut',
+                yoyo: true,
+                repeat: -1
+            });
+
+            // Random floating hearts animation restart
+            setInterval(() => {
+                const randomHeart = document.querySelectorAll('.floating-heart')[Math.floor(Math.random() * 10)];
+                if (randomHeart) {
+                    randomHeart.style.animation = 'none';
+                    randomHeart.offsetHeight; // Trigger reflow
+                    randomHeart.style.animation = 'heartFloat 12s linear infinite';
+                }
+            }, 3000);
+
+            // Hands section audio control
+            const handsAudioButton = document.getElementById('hands-audio-button');
+            const handsAmbientAudio = document.getElementById('hands-ambient-audio');
+            let handsIsPlaying = false;
+
+            if (handsAudioButton && handsAmbientAudio) {
+                handsAudioButton.addEventListener('click', function() {
+                    if (handsIsPlaying) {
+                        handsAmbientAudio.pause();
+                        handsAudioButton.textContent = '🔇';
+                        handsIsPlaying = false;
+                    } else {
+                        handsAmbientAudio.play().catch(e => console.log('Hands audio play failed:', e));
+                        handsAudioButton.textContent = '🔊';
+                        handsIsPlaying = true;
+                    }
+                });
+            }
+
+            // Update navigation for 6 memories
+            const memoryNavDots = document.querySelectorAll('.nav-dot');
+            const memorySections = document.querySelectorAll('.memory-section');
+
+            // Update scroll-triggered navigation
+            memorySections.forEach((section, index) => {
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: 'top 50%',
+                    end: 'bottom 50%',
+                    onEnter: () => updateActiveMemory(index + 1),
+                    onEnterBack: () => updateActiveMemory(index + 1)
+                });
+            });
+
+            function updateActiveMemory(memoryNumber) {
+                // Update counter
+                const currentMemorySpan = document.getElementById('current-memory');
+                if (currentMemorySpan) {
+                    currentMemorySpan.textContent = memoryNumber;
+                }
+
+                // Update navigation dots
+                memoryNavDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === memoryNumber - 1);
+                });
+            }
+
+            // Navigation dot click handlers
+            memoryNavDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    const targetSection = memorySections[index];
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        // Starry Dreams Section Animations and Interactions
     </script>
 </body>
 </html> 
